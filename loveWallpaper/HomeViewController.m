@@ -69,7 +69,8 @@
     _collectionView.dataSource = self;
     [_collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
     NSNib *theNib = [[NSNib alloc] initWithNibNamed:@"ImageCollectionViewItem" bundle:nil];
-    [_collectionView registerNib:theNib forItemWithIdentifier:AITETABLECELLIDENTIFIER];
+//    [_collectionView registerNib:theNib forItemWithIdentifier:AITETABLECELLIDENTIFIER];
+    [_collectionView registerClass:[ImageCollectionViewItem class] forItemWithIdentifier:@"nihao"];
     _scrollView.documentView = _collectionView;
     [self.view addSubview:_scrollView];
     
@@ -135,8 +136,8 @@
 - (NSCollectionViewItem *)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath{
 //
     ImageCollectionViewItem *item = (ImageCollectionViewItem *)[collectionView makeItemWithIdentifier:@"nihao" forIndexPath:indexPath];
-    NSLog(@"%@", item.imageView);
-    item.imageView.image = [[NSImage alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://p19.qhimg.com/bdm/1600_900_85/t01ae1f4579bf9e95fe.jpg"]];
+    item.dic = @{@"image":@"http://p19.qhimg.com/bdm/1600_900_85/t01ae1f4579bf9e95fe.jpg"};
+//    item.imageView.image = [[NSImage alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://p19.qhimg.com/bdm/1600_900_85/t01ae1f4579bf9e95fe.jpg"]];
     
     return item;
 }

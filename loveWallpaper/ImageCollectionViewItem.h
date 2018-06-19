@@ -9,6 +9,5 @@
 #import <Cocoa/Cocoa.h>
 
 @interface ImageCollectionViewItem : NSCollectionViewItem
-@property (weak) IBOutlet NSImageView *immm;
-
+@property (nonatomic) NSDictionary *dic;
 @end
