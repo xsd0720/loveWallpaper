@@ -20,10 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do view setup here.
+    self.view.layer.backgroundColor = [[NSColor redColor] CGColor];
     //do like ios
     NSButton *button = [[NSButton alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)];
     [button setTitle:@"button"];
     [self.view addSubview:button];
+    
 }
 
 @end
