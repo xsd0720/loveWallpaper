@@ -9,18 +9,11 @@
 #import "HomeViewController.h"
 #import "NSColor+extension.h"
 #import "HttpTool.h"
+#import "ImageCollectionViewItem.h"
 #define AITETABLECELLIDENTIFIER  @"AITETABLECELLIDENTIFIER"
 #define RGBA(r,g,b,a) [NSColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
 #define RGB(r,g,b) [NSColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1]
-@interface CollectionViewItem : NSCollectionViewItem
-- (void)prepareForReuse;
-@end
 
-@implementation CollectionViewItem
-- (void)prepareForReuse{
-    
-}
-@end
 
 @interface HomeViewController ()<NSTableViewDelegate, NSTableViewDataSource, NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) NSTableView *tableview;
@@ -75,7 +68,8 @@
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [_collectionView registerClass:[CollectionViewItem class] forItemWithIdentifier:@"nihao"];
+    NSNib *theNib = [[NSNib alloc] initWithNibNamed:@"ImageCollectionViewItem" bundle:nil];
+    [_collectionView registerNib:theNib forItemWithIdentifier:AITETABLECELLIDENTIFIER];
     _scrollView.documentView = _collectionView;
     [self.view addSubview:_scrollView];
     
@@ -139,23 +133,17 @@
 }
 
 - (NSCollectionViewItem *)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath{
+//
+    ImageCollectionViewItem *item = (ImageCollectionViewItem *)[collectionView makeItemWithIdentifier:@"nihao" forIndexPath:indexPath];
+    NSLog(@"%@", item.imageView);
+    item.imageView.image = [[NSImage alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://p19.qhimg.com/bdm/1600_900_85/t01ae1f4579bf9e95fe.jpg"]];
     
-   CollectionViewItem *item = (CollectionViewItem *)[collectionView makeItemWithIdentifier:@"nihao" forIndexPath:indexPath];
-    
-//    NSCollectionViewItem *item = [[NSCollectionViewItem alloc] init];
-//    NSTextField *vi = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)];
-//    [vi setStringValue:@"18989898"];
-//    vi.editable = false;
-//    //    vi.drawsBackground = NO;
-//    vi.bezeled = NO;
-//    vi.selectable = NO;
-//    item.textField =vi;
     return item;
 }
-- (NSView *)collectionView:(NSCollectionView *)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind)kind atIndexPath:(NSIndexPath *)indexPath{
-    return  nil;
-}
-- (NSCollectionViewItem *)newItemForRepresentedObject:(id)object{
-    return nil;
-}
+//- (NSView *)collectionView:(NSCollectionView *)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind)kind atIndexPath:(NSIndexPath *)indexPath{
+//    return  nil;
+//}
+//- (NSCollectionViewItem *)newItemForRepresentedObject:(id)object{
+//    return nil;
+//}
 @end
