@@ -42,10 +42,16 @@
     [self loadView];
     
     _bgImageView = [[NSImageView alloc] initWithFrame:self.view.bounds];
-    [_bgImageView sd_setImageWithURL:[NSURL URLWithString:@"http://p15.qhimg.com/bdr/__85/t013f358a6a343059ab.jpg"]];
+    
+    
+//    [_bgImageView sd_setImageWithURL:[NSURL URLWithString:@"http://p15.qhimg.com/bdr/__85/t013f358a6a343059ab.jpg"]];
     [self.view addSubview:_bgImageView];
     
-    
+    [HttpTool POST:@"http://api.breaker.club/wallpaper/suiji" parameters:NULL success:^(NSDictionary *responsObject) {
+        [_bgImageView sd_setImageWithURL:[NSURL URLWithString:responsObject[@"img_1280_1024"]]];
+    } failure:^(NSError *error) {
+        
+    }];
     _tableContainerView = [[NSScrollView alloc] initWithFrame:CGRectMake(0, 0, 100, self.view.frame.size.height)];
 
     _tableview = [[NSTableView alloc] initWithFrame:CGRectMake(0, 0,
@@ -98,7 +104,7 @@
     _scrollView.backgroundColor = [NSColor getColor:@"3dc2d5"];
     _scrollView.documentView = _collectionView;
     [self.view addSubview:_scrollView];
-    [HttpTool POST:@"http://cdn.apc.360.cn/index.php?c=WallPaper&a=getAllCategoriesV2&from=360chrome" parameters:NULL success:^(NSDictionary *responsObject) {
+    [HttpTool POST:@"http://api.breaker.club/wallpaper/category" parameters:NULL success:^(NSDictionary *responsObject) {
 
         self.dataSet = responsObject[@"data"];
 //        NSLog(@"%@", self.dataSet);
