@@ -30,10 +30,9 @@
 - (void)setDic:(NSDictionary *)dic{
     _dic = dic;
     
-    NSImage *im = [[NSImage alloc]initWithContentsOfURL:[NSURL URLWithString:@"http://p19.qhimg.com/bdm/1600_900_85/t01ae1f4579bf9e95fe.jpg"]];
+    NSImage *im = [[NSImage alloc]initWithContentsOfURL:[NSURL URLWithString:dic[@"image"]]];
     
-    
-    im =[self resizeImage:self.coverImageView.image size:NSMakeSize(100, 100)];
+    im =[self resizeImage:im size:NSMakeSize(100, 100)];
     self.coverImageView.image = im;
 //    self.coverImageView.image = [self resizeImage:self.coverImageView.image size:NSMakeSize(100, 100)];
 
