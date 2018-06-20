@@ -22,18 +22,17 @@
     // Insert code here to initialize your application
 
     NSUInteger style =  NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable;
-    float w = [[NSScreen mainScreen] frame].size.width/2;
-    float h = [[NSScreen mainScreen] frame].size.height/2;
+    float w = [[NSScreen mainScreen] frame].size.width/1.2;
+    float h = [[NSScreen mainScreen] frame].size.height/1.2;
     self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:YES];
 
-    self.window.titlebarAppearsTransparent = true;
-    self.window.titleVisibility = NSWindowTitleVisible;
+    self.window.titlebarAppearsTransparent = false;
+    self.window.titleVisibility = NSWindowTitleHidden;
 
     [self.window makeKeyAndOrderFront:nil];
     [self.window center];
     self.homeVC = [[HomeViewController alloc] init];
     [self.window setContentViewController:self.homeVC];
-
 
     [self configStatusBar];
 }
@@ -54,8 +53,6 @@
     [disableItem setTarget:self];
     [menu addItem:disableItem];
     
-
-    
 }
 
 - (void)quit{
@@ -64,6 +61,5 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
-
 
 @end
