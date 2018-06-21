@@ -24,4 +24,8 @@
     self.alphaValue = 0.6;
 }
 
+- (void)resetCursorRects{
+    [super resetCursorRects];
+    [self addCursorRect:self.bounds cursor:[NSCursor pointingHandCursor]];
+}
 @end

@@ -9,13 +9,17 @@
 #import "ImageCollectionViewItem.h"
 #import "UIImageView+WebCache.h"
 #import "ClipView.h"
+#import "CursorImageView.h"
+
 @interface ImageCollectionViewItem ()
 
-@property (nonatomic, strong) NSImageView *coverImageView;
+@property (nonatomic, strong) CursorImageView *coverImageView;
 @property (nonatomic, strong) NSTextField *nameLabel;
 
 @property (nonatomic, strong) ClipView *clipView;
 @end
+
+
 
 @implementation ImageCollectionViewItem
 - (void)loadView{
@@ -31,9 +35,13 @@
 - (instancetype)initWithNibName:(NSNibName)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.coverImageView = [[NSImageView alloc] initWithFrame:self.view.bounds];
+        self.view.wantsLayer = true;
+        self.view.layer.backgroundColor = [[NSColor redColor] CGColor];
+//        [self.view updateTrackingAreas];
+        
+        self.coverImageView = [[CursorImageView alloc] initWithFrame:self.view.bounds];
         self.coverImageView.wantsLayer = YES;
-        self.coverImageView.layer.backgroundColor = [[NSColor orangeColor] CGColor];
+        self.coverImageView.layer.backgroundColor = [[NSColor purpleColor] CGColor];
         [self.view addSubview:self.coverImageView];
 
         self.clipView = [[ClipView alloc] initWithFrame:NSMakeRect(0, 20, 100, 30)];
@@ -51,7 +59,14 @@
         self.nameLabel.textColor = [[NSColor whiteColor] colorWithAlphaComponent:0.9];
         self.nameLabel.font = [NSFont labelFontOfSize:15];
         [self.coverImageView addSubview:self.nameLabel];
+       
+        NSShadow *shadow = [[NSShadow alloc] init];
         
+        [shadow setShadowColor:[[NSColor blackColor] colorWithAlphaComponent:0.8]];
+        [shadow setShadowOffset:NSMakeSize(0, -2)];
+        [shadow setShadowBlurRadius:5];
+        self.view.wantsLayer = YES;
+        [self.view setShadow:shadow];
     }
     return self;
 }
@@ -59,13 +74,31 @@
 - (void)setDic:(NSDictionary *)dic{
     _dic = dic;
 //    http://p15.qhimg.com/bdr/__25/t013f358a6a343059ab.jpg
-    __weak typeof(self) weakSelf = self;
-    _nameLabel.stringValue = dic[@"name"];
-    NSURL *url = [NSURL URLWithString:@"http://p19.qhimg.com/bdm/250_150_100/t013f358a6a343059ab.jpg"];
-    [_coverImageView sd_setImageWithURL:url completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        NSImage *im =[weakSelf resizeImage:image size:weakSelf.view.bounds.size];
-        weakSelf.coverImageView.image = im;
-    }];
+    
+    if (dic[@"name"]) {
+        __weak typeof(self) weakSelf = self;
+        _nameLabel.stringValue = dic[@"name"];
+        NSURL *url = [NSURL URLWithString:@"http://p19.qhimg.com/bdm/250_150_100/t013f358a6a343059ab.jpg"];
+        [_coverImageView sd_setImageWithURL:url completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            NSImage *im =[weakSelf resizeImage:image size:weakSelf.view.bounds.size];
+            weakSelf.coverImageView.image = im;
+        }];
+    }else{
+        self.nameLabel.hidden = YES;
+        self.clipView.hidden =YES;
+        __weak typeof(self) weakSelf = self;
+        NSString *urlstr = dic[@"url_thumb"];
+        NSURL *url = [NSURL URLWithString:urlstr];
+        
+        
+        NSString *thumbUrlStr = [NSString stringWithFormat:@"%@://%@/bdm/250_150_100/%@", url.scheme,url.host,[url pathComponents][1]];
+        NSURL * nurl = [NSURL URLWithString:thumbUrlStr];
+        [_coverImageView sd_setImageWithURL:nurl completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            NSImage *im =[weakSelf resizeImage:image size:weakSelf.view.bounds.size];
+            weakSelf.coverImageView.image = im;
+        }];
+    }
+
     
 //    self.coverImageView.image = [self resizeImage:self.coverImageView.image size:NSMakeSize(100, 100)];
 
@@ -80,6 +113,8 @@
     image.size = NSMakeSize(MAX(nw, nh), MIN(nw, nh));
     return image;
 }
+
+
 //- (NSImage*) resizeImage:(NSImage*)sourceImage size:(NSSize)size{
 //    NSRect targetFrame = NSMakeRect(0, 0, size.width, size.height);
 //    NSImage*  targetImage = [[NSImage alloc] initWithSize:size];
@@ -117,5 +152,4 @@
 //
 //    return targetImage;
 //}
-
 @end

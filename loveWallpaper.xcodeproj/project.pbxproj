@@ -7,7 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B00230A20DBA07A00082E51 /* CursorImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00230920DBA07A00082E51 /* CursorImageView.m */; };
+		3B00230D20DBA11F00082E51 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00230C20DBA11F00082E51 /* DetailViewController.m */; };
+		3B00231020DBACA800082E51 /* NSString+md5.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00230F20DBACA800082E51 /* NSString+md5.m */; };
+		3B00231320DBB13700082E51 /* NSImageView+contentMode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B00231220DBB13700082E51 /* NSImageView+contentMode.m */; };
 		3B2EBDFB20DA2AD800AF5C27 /* ClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EBDFA20DA2AD800AF5C27 /* ClipView.m */; };
+		3B2EBDFE20DB401600AF5C27 /* DetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EBDFD20DB401600AF5C27 /* DetailView.m */; };
+		3B2EBE0120DB5AEE00AF5C27 /* ListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EBE0020DB5AEE00AF5C27 /* ListView.m */; };
+		3B2EBE0420DB5CEA00AF5C27 /* BViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EBE0320DB5CEA00AF5C27 /* BViewController.m */; };
+		3B2EBE0720DB6B4B00AF5C27 /* CustomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EBE0620DB6B4B00AF5C27 /* CustomAnimator.m */; };
+		3B2EBE4420DB80BC00AF5C27 /* NSViewController+present.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EBE4320DB80BC00AF5C27 /* NSViewController+present.m */; };
+		3B2EBE4720DB84D800AF5C27 /* NSView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B2EBE4620DB84D800AF5C27 /* NSView+Extension.m */; };
 		3B51CB4520D8B31100A2C9FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51CB4420D8B31100A2C9FD /* AppDelegate.m */; };
 		3B51CB4720D8B31100A2C9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B51CB4620D8B31100A2C9FD /* Assets.xcassets */; };
 		3B51CB4D20D8B31200A2C9FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51CB4C20D8B31200A2C9FD /* main.m */; };
@@ -54,8 +64,28 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3B00230820DBA07A00082E51 /* CursorImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CursorImageView.h; sourceTree = "<group>"; };
+		3B00230920DBA07A00082E51 /* CursorImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CursorImageView.m; sourceTree = "<group>"; };
+		3B00230B20DBA11F00082E51 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		3B00230C20DBA11F00082E51 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		3B00230E20DBACA800082E51 /* NSString+md5.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+md5.h"; sourceTree = "<group>"; };
+		3B00230F20DBACA800082E51 /* NSString+md5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+md5.m"; sourceTree = "<group>"; };
+		3B00231120DBB13700082E51 /* NSImageView+contentMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImageView+contentMode.h"; sourceTree = "<group>"; };
+		3B00231220DBB13700082E51 /* NSImageView+contentMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImageView+contentMode.m"; sourceTree = "<group>"; };
 		3B2EBDF920DA2AD800AF5C27 /* ClipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClipView.h; sourceTree = "<group>"; };
 		3B2EBDFA20DA2AD800AF5C27 /* ClipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClipView.m; sourceTree = "<group>"; };
+		3B2EBDFC20DB401600AF5C27 /* DetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailView.h; sourceTree = "<group>"; };
+		3B2EBDFD20DB401600AF5C27 /* DetailView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailView.m; sourceTree = "<group>"; };
+		3B2EBDFF20DB5AEE00AF5C27 /* ListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListView.h; sourceTree = "<group>"; };
+		3B2EBE0020DB5AEE00AF5C27 /* ListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListView.m; sourceTree = "<group>"; };
+		3B2EBE0220DB5CEA00AF5C27 /* BViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BViewController.h; sourceTree = "<group>"; };
+		3B2EBE0320DB5CEA00AF5C27 /* BViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BViewController.m; sourceTree = "<group>"; };
+		3B2EBE0520DB6B4B00AF5C27 /* CustomAnimator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomAnimator.h; sourceTree = "<group>"; };
+		3B2EBE0620DB6B4B00AF5C27 /* CustomAnimator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomAnimator.m; sourceTree = "<group>"; };
+		3B2EBE4220DB80BC00AF5C27 /* NSViewController+present.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSViewController+present.h"; sourceTree = "<group>"; };
+		3B2EBE4320DB80BC00AF5C27 /* NSViewController+present.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSViewController+present.m"; sourceTree = "<group>"; };
+		3B2EBE4520DB84D800AF5C27 /* NSView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+Extension.h"; sourceTree = "<group>"; };
+		3B2EBE4620DB84D800AF5C27 /* NSView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+Extension.m"; sourceTree = "<group>"; };
 		3B51CB4020D8B31100A2C9FD /* loveWallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveWallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B51CB4320D8B31100A2C9FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B51CB4420D8B31100A2C9FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -195,6 +225,26 @@
 				553E168B20D96FD800814FE0 /* ImageCollectionViewItem.m */,
 				3B2EBDF920DA2AD800AF5C27 /* ClipView.h */,
 				3B2EBDFA20DA2AD800AF5C27 /* ClipView.m */,
+				3B2EBDFC20DB401600AF5C27 /* DetailView.h */,
+				3B2EBDFD20DB401600AF5C27 /* DetailView.m */,
+				3B2EBDFF20DB5AEE00AF5C27 /* ListView.h */,
+				3B2EBE0020DB5AEE00AF5C27 /* ListView.m */,
+				3B2EBE0220DB5CEA00AF5C27 /* BViewController.h */,
+				3B2EBE0320DB5CEA00AF5C27 /* BViewController.m */,
+				3B2EBE0520DB6B4B00AF5C27 /* CustomAnimator.h */,
+				3B2EBE0620DB6B4B00AF5C27 /* CustomAnimator.m */,
+				3B2EBE4220DB80BC00AF5C27 /* NSViewController+present.h */,
+				3B2EBE4320DB80BC00AF5C27 /* NSViewController+present.m */,
+				3B2EBE4520DB84D800AF5C27 /* NSView+Extension.h */,
+				3B2EBE4620DB84D800AF5C27 /* NSView+Extension.m */,
+				3B00230820DBA07A00082E51 /* CursorImageView.h */,
+				3B00230920DBA07A00082E51 /* CursorImageView.m */,
+				3B00230B20DBA11F00082E51 /* DetailViewController.h */,
+				3B00230C20DBA11F00082E51 /* DetailViewController.m */,
+				3B00230E20DBACA800082E51 /* NSString+md5.h */,
+				3B00230F20DBACA800082E51 /* NSString+md5.m */,
+				3B00231120DBB13700082E51 /* NSImageView+contentMode.h */,
+				3B00231220DBB13700082E51 /* NSImageView+contentMode.m */,
 			);
 			path = loveWallpaper;
 			sourceTree = "<group>";
@@ -366,6 +416,8 @@
 			files = (
 				3BD211E620D9F10C005151C7 /* UIImage+GIF.m in Sources */,
 				3B51CB4D20D8B31200A2C9FD /* main.m in Sources */,
+				3B00231020DBACA800082E51 /* NSString+md5.m in Sources */,
+				3B00230D20DBA11F00082E51 /* DetailViewController.m in Sources */,
 				3BD211E420D9F10C005151C7 /* FLAnimatedImageView+WebCache.m in Sources */,
 				3BD211EA20D9F10C005151C7 /* SDWebImagePrefetcher.m in Sources */,
 				3BD211F220D9F10C005151C7 /* UIImageView+WebCache.m in Sources */,
@@ -373,11 +425,15 @@
 				3B2EBDFB20DA2AD800AF5C27 /* ClipView.m in Sources */,
 				3BD211E220D9F10C005151C7 /* UIImage+ForceDecode.m in Sources */,
 				3BD211DD20D9F10C005151C7 /* UIImage+WebP.m in Sources */,
+				3B2EBDFE20DB401600AF5C27 /* DetailView.m in Sources */,
 				3BD211E020D9F10C005151C7 /* UIImageView+HighlightedWebCache.m in Sources */,
+				3B00231320DBB13700082E51 /* NSImageView+contentMode.m in Sources */,
 				553E168D20D96FD800814FE0 /* ImageCollectionViewItem.m in Sources */,
 				3BD211E920D9F10C005151C7 /* SDWebImageCompat.m in Sources */,
+				3B2EBE0120DB5AEE00AF5C27 /* ListView.m in Sources */,
 				3BD211F120D9F10C005151C7 /* NSData+ImageContentType.m in Sources */,
 				3BD211E820D9F10C005151C7 /* SDWebImageCoderHelper.m in Sources */,
+				3B2EBE0720DB6B4B00AF5C27 /* CustomAnimator.m in Sources */,
 				559D65CF20D93F5B0087E8C7 /* AFNetworkReachabilityManager.m in Sources */,
 				3B51CB4520D8B31100A2C9FD /* AppDelegate.m in Sources */,
 				3BD211FA20D9F10C005151C7 /* SDWebImageWebPCoder.m in Sources */,
@@ -394,18 +450,22 @@
 				3BD211E720D9F10C005151C7 /* UIImage+MultiFormat.m in Sources */,
 				559D65CC20D93F5B0087E8C7 /* AFHTTPSessionManager.m in Sources */,
 				559D65D020D93F5B0087E8C7 /* AFSecurityPolicy.m in Sources */,
+				3B2EBE4420DB80BC00AF5C27 /* NSViewController+present.m in Sources */,
 				3BCFD96420D8C71C00432C2C /* HomeViewController.m in Sources */,
 				3BD211F720D9F10C005151C7 /* UIView+WebCache.m in Sources */,
 				559D65D320D93FC90087E8C7 /* HttpTool.m in Sources */,
 				3BD211F320D9F10C005151C7 /* NSImage+WebCache.m in Sources */,
+				3B00230A20DBA07A00082E51 /* CursorImageView.m in Sources */,
 				3BD211F920D9F10C005151C7 /* UIButton+WebCache.m in Sources */,
 				3BD211F420D9F10C005151C7 /* SDWebImageGIFCoder.m in Sources */,
 				3BD211DE20D9F10C005151C7 /* MKAnnotationView+WebCache.m in Sources */,
 				3BD211F520D9F10C005151C7 /* SDImageCacheConfig.m in Sources */,
 				3BD211F820D9F10C005151C7 /* SDWebImageImageIOCoder.m in Sources */,
+				3B2EBE0420DB5CEA00AF5C27 /* BViewController.m in Sources */,
 				3BD211DF20D9F10C005151C7 /* SDWebImageManager.m in Sources */,
 				559D65CB20D93F5B0087E8C7 /* AFURLResponseSerialization.m in Sources */,
 				3BD211E520D9F10C005151C7 /* SDWebImageDownloader.m in Sources */,
+				3B2EBE4720DB84D800AF5C27 /* NSView+Extension.m in Sources */,
 				559D65CE20D93F5B0087E8C7 /* AFURLRequestSerialization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

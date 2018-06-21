@@ -25,16 +25,19 @@
     float w = [[NSScreen mainScreen] frame].size.width/1.2;
     float h = [[NSScreen mainScreen] frame].size.height/1.2;
     self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:YES];
+    
 
-    self.window.titlebarAppearsTransparent = false;
+    _window.titlebarAppearsTransparent = false;
     self.window.titleVisibility = NSWindowTitleHidden;
-
-    [self.window makeKeyAndOrderFront:nil];
+//    self.window.delegate = self;
+    [self.window makeKeyAndOrderFront:self];
     [self.window center];
     self.homeVC = [[HomeViewController alloc] init];
     [self.window setContentViewController:self.homeVC];
-
+    [self.window setReleasedWhenClosed:NO];
     [self configStatusBar];
+//    [self configMainMenu];
+    
 }
 
 - (void)configStatusBar{
@@ -55,6 +58,41 @@
     
 }
 
+- (void)configMainMenu{
+    NSMenu *menu = [[NSMenu alloc] init];
+
+    NSMenuItem * appItem = [[NSMenuItem alloc] initWithTitle:@"love" action:Nil keyEquivalent:@""];
+    [menu addItem:appItem];
+    // this title will be ignore too
+    NSMenu *appMenu = [[NSMenu alloc] init];
+    NSMenuItem *aboutItem  = [[NSMenuItem alloc] initWithTitle:@"hidden" action:@selector(abc) keyEquivalent:@""];
+    [appMenu addItem:aboutItem];
+    [appMenu addItem:[NSMenuItem separatorItem]];
+    NSMenuItem *quitItem = [[NSMenuItem alloc] initWithTitle:@"quit" action:@selector(quit) keyEquivalent:@""];
+    [appMenu addItem:quitItem];
+    [menu setSubmenu:appMenu forItem:appItem];
+
+    
+//    [[NSApplication sharedApplication] setMenu:menu];
+    
+    [[NSApplication sharedApplication] setMainMenu:menu];
+}
+
+- (void)abc{
+    [self.window orderOut:nil];
+}
+
+-(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender{
+    return NO;
+}
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)sender hasVisibleWindows:(BOOL)flag{
+    if(!flag)
+    {
+        [NSApp activateIgnoringOtherApps:NO];
+        [self.window makeKeyAndOrderFront:self];
+    }
+    return YES;
+}
 - (void)quit{
     [[NSApplication sharedApplication] terminate:nil];
 }
