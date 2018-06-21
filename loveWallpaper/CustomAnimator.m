@@ -28,14 +28,15 @@
     float h = [NSApplication sharedApplication].keyWindow.frame.size.height;
     
     topVC.view.frame = NSMakeRect(0, 0, w, h);
-    [bottomVC.view addSubview:topVC.view];
-    [bottomVC addChildViewController:topVC];
+    [[NSApplication sharedApplication].keyWindow.contentView addSubview:topVC.view];
+//    [bottomVC addChildViewController:topVC];
     
     //    // adjust size and colour
     //    CGRect frame = NSRectToCGRect(bottomVC.view.frame);
     //    frame = CGRectInset(frame, 40, 40);
     //    [topVC.view setFrame:NSRectFromCGRect(frame)];
     topVC.view.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    bottomVC.view.hidden = YES;
     //
     //    // Do some CoreAnimation stuff to present view
     //    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
@@ -47,10 +48,12 @@
 
 - (void)animateDismissalOfViewController:(NSViewController *)viewController fromViewController:(NSViewController *)fromViewController {
     
-    //    //NSViewController* bottomVC = fromViewController;
+        NSViewController* bottomVC = fromViewController;
+    bottomVC.view.hidden = NO;
     NSViewController* topVC = viewController;
     [topVC.view removeFromSuperview];
-    [topVC removeFromParentViewController];
+    
+//    [topVC removeFromParentViewController];
     //
     //    // make sure the view has a CA layer for smooth animation
     //    topVC.view.wantsLayer = YES;

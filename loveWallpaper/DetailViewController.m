@@ -10,6 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "SDWebImageManager.h"
 #import "NSString+md5.h"
+#import "NSImageView+contentMode.h"
 @interface DetailViewController ()
 @property (nonatomic, strong) NSImageView *bgImageView;
 @end
@@ -23,6 +24,7 @@
     
     self.bgImageView = [[NSImageView alloc] initWithFrame:self.view.bounds];
     self.bgImageView.wantsLayer = true;
+    self.bgImageView.contentMode = NSViewContentModeScaleAspectFill;
     self.bgImageView.layer.backgroundColor = [[NSColor purpleColor] CGColor];
     //        [self.coverImageView sd_setImageWithURL:self.dataSet[0][@"url"]];
     [self.bgImageView sd_setImageWithURL:self.dic[@"url"] completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
@@ -80,4 +82,6 @@
     NSData *d = [im TIFFRepresentation];
     [d writeToFile:filePath atomically:NO];
 }
+
+
 @end

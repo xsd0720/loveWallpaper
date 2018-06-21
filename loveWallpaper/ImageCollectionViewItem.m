@@ -10,7 +10,7 @@
 #import "UIImageView+WebCache.h"
 #import "ClipView.h"
 #import "CursorImageView.h"
-
+#import "NSImageView+contentMode.h"
 @interface ImageCollectionViewItem ()
 
 @property (nonatomic, strong) CursorImageView *coverImageView;
@@ -35,14 +35,20 @@
 - (instancetype)initWithNibName:(NSNibName)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
+        NSTrackingArea *trackArea = [[NSTrackingArea alloc] initWithRect:self.view.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow) owner:self userInfo:nil];
+        [self.view addTrackingArea:trackArea];
+        
         self.view.wantsLayer = true;
         self.view.layer.backgroundColor = [[NSColor redColor] CGColor];
 //        [self.view updateTrackingAreas];
         
         self.coverImageView = [[CursorImageView alloc] initWithFrame:self.view.bounds];
         self.coverImageView.wantsLayer = YES;
+        self.coverImageView.contentMode = NSViewContentModeScaleAspectFill;
         self.coverImageView.layer.backgroundColor = [[NSColor purpleColor] CGColor];
         [self.view addSubview:self.coverImageView];
+
 
         self.clipView = [[ClipView alloc] initWithFrame:NSMakeRect(0, 20, 100, 30)];
 //        self.clipView.wantsLayer = YES;
@@ -70,7 +76,13 @@
     }
     return self;
 }
+- (void)mouseEntered:(NSEvent *)event{
+    [[NSCursor pointingHandCursor] set];
+}
 
+- (void)mouseExited:(NSEvent *)event{
+    [[NSCursor arrowCursor] set];
+}
 - (void)setDic:(NSDictionary *)dic{
     _dic = dic;
 //    http://p15.qhimg.com/bdr/__25/t013f358a6a343059ab.jpg
@@ -113,7 +125,6 @@
     image.size = NSMakeSize(MAX(nw, nh), MIN(nw, nh));
     return image;
 }
-
 
 //- (NSImage*) resizeImage:(NSImage*)sourceImage size:(NSSize)size{
 //    NSRect targetFrame = NSMakeRect(0, 0, size.width, size.height);

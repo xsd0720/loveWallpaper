@@ -10,12 +10,25 @@
 
 @implementation CursorImageView
 
+- (instancetype)initWithFrame:(NSRect)frameRect{
+    self = [super initWithFrame:frameRect];
+    if (self) {
+//        NSTrackingArea *trackArea = [[NSTrackingArea alloc] initWithRect:self.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved | NSTrackingActiveInKeyWindow) owner:self userInfo:nil];
+//        [self addTrackingArea:trackArea];
+    }
+    return self;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    // Drawing code here.
 }
-- (void)resetCursorRects{
-    [self addCursorRect:self.bounds cursor:[NSCursor pointingHandCursor]];
-}
+
+//- (void)mouseEntered:(NSEvent *)event{
+//    [[NSCursor pointingHandCursor] set];
+//}
+//
+//- (void)mouseExited:(NSEvent *)event{
+//    [[NSCursor arrowCursor] set];
+//}
 @end

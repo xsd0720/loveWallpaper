@@ -53,6 +53,7 @@
 		3BD211F920D9F10C005151C7 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD211DA20D9F10C005151C7 /* UIButton+WebCache.m */; };
 		3BD211FA20D9F10C005151C7 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BD211DB20D9F10C005151C7 /* SDWebImageWebPCoder.m */; };
 		553E168D20D96FD800814FE0 /* ImageCollectionViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E168B20D96FD800814FE0 /* ImageCollectionViewItem.m */; };
+		553E16C320DBF31E00814FE0 /* VCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E16C220DBF31E00814FE0 /* VCView.m */; };
 		559D65CB20D93F5B0087E8C7 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D65C220D93F5B0087E8C7 /* AFURLResponseSerialization.m */; };
 		559D65CC20D93F5B0087E8C7 /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D65C320D93F5B0087E8C7 /* AFHTTPSessionManager.m */; };
 		559D65CD20D93F5B0087E8C7 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 559D65C520D93F5B0087E8C7 /* AFURLSessionManager.m */; };
@@ -86,7 +87,7 @@
 		3B2EBE4320DB80BC00AF5C27 /* NSViewController+present.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSViewController+present.m"; sourceTree = "<group>"; };
 		3B2EBE4520DB84D800AF5C27 /* NSView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSView+Extension.h"; sourceTree = "<group>"; };
 		3B2EBE4620DB84D800AF5C27 /* NSView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSView+Extension.m"; sourceTree = "<group>"; };
-		3B51CB4020D8B31100A2C9FD /* loveWallpaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loveWallpaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B51CB4020D8B31100A2C9FD /* 爱壁纸HD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "爱壁纸HD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B51CB4320D8B31100A2C9FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B51CB4420D8B31100A2C9FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3B51CB4620D8B31100A2C9FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +159,8 @@
 		3BD211DC20D9F10C005151C7 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		553E168A20D96FD800814FE0 /* ImageCollectionViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageCollectionViewItem.h; sourceTree = "<group>"; };
 		553E168B20D96FD800814FE0 /* ImageCollectionViewItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCollectionViewItem.m; sourceTree = "<group>"; };
+		553E16C120DBF31E00814FE0 /* VCView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VCView.h; sourceTree = "<group>"; };
+		553E16C220DBF31E00814FE0 /* VCView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VCView.m; sourceTree = "<group>"; };
 		559D65BE20D93F5B0087E8C7 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFSecurityPolicy.h; sourceTree = "<group>"; };
 		559D65BF20D93F5B0087E8C7 /* AFNetworkReachabilityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachabilityManager.h; sourceTree = "<group>"; };
 		559D65C020D93F5B0087E8C7 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
@@ -199,7 +202,7 @@
 		3B51CB4120D8B31100A2C9FD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3B51CB4020D8B31100A2C9FD /* loveWallpaper.app */,
+				3B51CB4020D8B31100A2C9FD /* 爱壁纸HD.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -245,6 +248,8 @@
 				3B00230F20DBACA800082E51 /* NSString+md5.m */,
 				3B00231120DBB13700082E51 /* NSImageView+contentMode.h */,
 				3B00231220DBB13700082E51 /* NSImageView+contentMode.m */,
+				553E16C120DBF31E00814FE0 /* VCView.h */,
+				553E16C220DBF31E00814FE0 /* VCView.m */,
 			);
 			path = loveWallpaper;
 			sourceTree = "<group>";
@@ -362,7 +367,7 @@
 			);
 			name = loveWallpaper;
 			productName = loveWallpaper;
-			productReference = 3B51CB4020D8B31100A2C9FD /* loveWallpaper.app */;
+			productReference = 3B51CB4020D8B31100A2C9FD /* 爱壁纸HD.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -461,6 +466,7 @@
 				3BD211DE20D9F10C005151C7 /* MKAnnotationView+WebCache.m in Sources */,
 				3BD211F520D9F10C005151C7 /* SDImageCacheConfig.m in Sources */,
 				3BD211F820D9F10C005151C7 /* SDWebImageImageIOCoder.m in Sources */,
+				553E16C320DBF31E00814FE0 /* VCView.m in Sources */,
 				3B2EBE0420DB5CEA00AF5C27 /* BViewController.m in Sources */,
 				3BD211DF20D9F10C005151C7 /* SDWebImageManager.m in Sources */,
 				559D65CB20D93F5B0087E8C7 /* AFURLResponseSerialization.m in Sources */,
@@ -585,7 +591,7 @@
 				INFOPLIST_FILE = loveWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lovebizi.loveWallpaper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "爱壁纸HD";
 			};
 			name = Debug;
 		};
@@ -598,7 +604,7 @@
 				INFOPLIST_FILE = loveWallpaper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lovebizi.loveWallpaper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "爱壁纸HD";
 			};
 			name = Release;
 		};

@@ -21,7 +21,7 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
 
-    NSUInteger style =  NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable;
+    NSUInteger style =  NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable|NSWindowStyleMaskFullScreen;
     float w = [[NSScreen mainScreen] frame].size.width/1.2;
     float h = [[NSScreen mainScreen] frame].size.height/1.2;
     self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:YES];
@@ -33,12 +33,15 @@
     [self.window makeKeyAndOrderFront:self];
     [self.window center];
     self.homeVC = [[HomeViewController alloc] init];
-    [self.window setContentViewController:self.homeVC];
+//    [self.window setContentViewController:self.homeVC];
+    [self.window.contentView addSubview:self.homeVC.view];
     [self.window setReleasedWhenClosed:NO];
     [self configStatusBar];
 //    [self configMainMenu];
     
+    
 }
+
 
 - (void)configStatusBar{
     self.demoItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];

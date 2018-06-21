@@ -22,10 +22,9 @@ typedef NS_ENUM(NSInteger, NSViewContentMode) {
     NSViewContentModeTopRight,
     NSViewContentModeBottomLeft,
     NSViewContentModeBottomRight,
-};
-
+} NS_ENUM_AVAILABLE_MAC(10_10);
 
 @interface NSImageView (contentMode)
 
-@property(nonatomic) NSViewContentMode *contentMode;
+@property (nonatomic, assign) NSViewContentMode contentMode;
 @end

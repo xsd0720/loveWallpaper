@@ -8,13 +8,15 @@
 
 #import "NSViewController+present.h"
 #import "CustomAnimator.h"
+#import "VCView.h"
 @implementation NSViewController (present)
 
 - (void)loadView{
     NSRect frame = [[[NSApplication sharedApplication] mainWindow] frame];
     frame.origin.x = 0;
     frame.origin.y = 0;
-    self.view = [[NSView alloc] initWithFrame:frame];
+    VCView *v = [[VCView alloc] initWithFrame:frame];
+    self.view = v;
 }
 - (void)presentViewController:(NSViewController *)viewController{
     CustomAnimator *an = [[CustomAnimator alloc] init];
@@ -28,4 +30,9 @@
         [[[NSApplication sharedApplication] mainWindow] close];
     }
 }
+- (void)mouseDown:(NSEvent *)event{
+    [super mouseDown:event];
+}
+
+
 @end
