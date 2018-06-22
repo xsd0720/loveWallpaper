@@ -34,5 +34,34 @@
     [super mouseDown:event];
 }
 
+//- (void)viewDidAppear{
+
+//    NSWindow *win = [[NSApplication sharedApplication] keyWindow];
+
+//    NSLayoutConstraint *leftLaytout = [NSLayoutConstraint constraintWithItem:win.contentView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1 constant:20];
+//
+//    NSLayoutConstraint *rightLaytout = [NSLayoutConstraint constraintWithItem:win.contentView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1 constant:20];
+//
+//    NSLayoutConstraint *topLaytout = [NSLayoutConstraint constraintWithItem:win.contentView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1 constant:20];
+//
+//    NSLayoutConstraint *bottomLaytout = [NSLayoutConstraint constraintWithItem:win.contentView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1 constant:20];
+    
+    
+//    NSLayoutConstraint *leftLaytout = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:win.contentView attribute:NSLayoutAttributeLeft multiplier:1 constant:0];
+//
+//    NSLayoutConstraint *rightLaytout = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:win.contentView attribute:NSLayoutAttributeRight multiplier:1 constant:0];
+//
+//    NSLayoutConstraint *topLaytout = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:win.contentView attribute:NSLayoutAttributeTop multiplier:1 constant:30];
+//
+//    NSLayoutConstraint *bottomLaytout = [NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:win.contentView attribute:NSLayoutAttributeBottom multiplier:1 constant:0];
+    
+//    topLaytout.priority = NSLayoutPriorityDefaultLow;
+//    [self.view addConstraints:@[leftLaytout, rightLaytout, topLaytout, bottomLaytout]];
+//    [win.contentView addConstraint:leftLaytout];
+//    [win.contentView addConstraint:rightLaytout];
+//    [win.contentView addConstraint:topLaytout];
+//    [win.contentView addConstraint:bottomLaytout];
+    
+//}
 
 @end

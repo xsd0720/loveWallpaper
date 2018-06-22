@@ -9,8 +9,8 @@
 #import "NSImageView+contentMode.h"
 #import <objc/runtime.h>
 static char *contentModeKey = "contentModeKey";
+static char *orginImageKey = "orginImageKey";
 @implementation NSImageView (contentMode)
-@dynamic contentMode;
 
 + (void)load{
     static dispatch_once_t onceToken;
@@ -41,6 +41,14 @@ static char *contentModeKey = "contentModeKey";
     return [number integerValue];
 }
 
+- (void)setOrginImage:(NSImage *)orginImage{
+    objc_setAssociatedObject(self, orginImageKey, orginImage, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+- (NSImage *)orginImage{
+    return objc_getAssociatedObject(self, orginImageKey);
+}
+
 - (void)pre_setImage:(NSImage *)image{
     if (image) {
         switch (self.contentMode) {
@@ -58,6 +66,9 @@ static char *contentModeKey = "contentModeKey";
 }
 
 - (NSImage*) resizeImage:(NSImage*)sourceImage size:(NSSize)size{
+    if (size.height == 0) {
+        return nil;
+    }
     NSRect targetFrame = NSMakeRect(0, 0, size.width, size.height);
     NSImage *targetImage = [[NSImage alloc] initWithSize:size];
 
@@ -92,8 +103,12 @@ static char *contentModeKey = "contentModeKey";
 
     return targetImage;
 }
-//- (void)resetCursorRects{
-//    [self addCursorRect:self.bounds cursor:[NSCursor pointingHandCursor]];
-//}
+
+- (void)update{
+//    NSImage *image = [self resizeImage:self.orginImage size:self.bounds.size];
+//    [self pre_setImage:image];
+}
+
+
 
 @end

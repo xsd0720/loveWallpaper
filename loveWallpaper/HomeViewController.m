@@ -57,12 +57,14 @@
     [HttpTool POST:@"http://api.breaker.club/wallpaper/bing" parameters:NULL success:^(NSDictionary *responsObject) {
         NSString *uri = responsObject[@"images"][0][@"url"];
         NSString *url = [NSString stringWithFormat:@"http://cn.bing.com%@", uri];
-        [_bgImageView sd_setImageWithURL:[NSURL URLWithString:url]];
-        [_bgImageView addCursorRect:NSMakeRect(0, 0, 500, 500) cursor:[NSCursor arrowCursor]];
-        [_bgImageView resetCursorRects];
+        [_bgImageView sd_setImageWithURL:[NSURL URLWithString:url] completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            _bgImageView.orginImage = image;
+        }];
+
     } failure:^(NSError *error) {
         
     }];
+    
 //    _tableContainerView = [[NSScrollView alloc] initWithFrame:CGRectMake(0, 0, 100, self.view.frame.size.height)];
 //
 //    _tableview = [[NSTableView alloc] initWithFrame:CGRectMake(0, 0,
@@ -130,6 +132,11 @@
         NSLog(@"%@", error);
     }];
     
+}
+
+- (void)viewDidLayout{
+    self.bgImageView.frame = self.view.bounds;
+//    [self.bgImageView update];
 }
 
 //- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{

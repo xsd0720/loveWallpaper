@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3B51CB3F20D8B31100A2C9FD"
-               BuildableName = "loveWallpaper.app"
+               BuildableName = "&#x7231;&#x58c1;&#x7eb8;HD.app"
                BlueprintName = "loveWallpaper"
                ReferencedContainer = "container:loveWallpaper.xcodeproj">
             </BuildableReference>
@@ -34,7 +34,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B51CB3F20D8B31100A2C9FD"
-            BuildableName = "loveWallpaper.app"
+            BuildableName = "&#x7231;&#x58c1;&#x7eb8;HD.app"
             BlueprintName = "loveWallpaper"
             ReferencedContainer = "container:loveWallpaper.xcodeproj">
          </BuildableReference>
@@ -58,17 +58,19 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B51CB3F20D8B31100A2C9FD"
-            BuildableName = "loveWallpaper.app"
+            BuildableName = "&#x7231;&#x58c1;&#x7eb8;HD.app"
             BlueprintName = "loveWallpaper"
             ReferencedContainer = "container:loveWallpaper.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "OS_ACTIVITY_MODE"
+            value = "disable"
+            isEnabled = "NO">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
-         <AdditionalOption
-            key = "NSZombieEnabled"
-            value = "YES"
-            isEnabled = "YES">
-         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -82,7 +84,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3B51CB3F20D8B31100A2C9FD"
-            BuildableName = "loveWallpaper.app"
+            BuildableName = "&#x7231;&#x58c1;&#x7eb8;HD.app"
             BlueprintName = "loveWallpaper"
             ReferencedContainer = "container:loveWallpaper.xcodeproj">
          </BuildableReference>

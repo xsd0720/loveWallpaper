@@ -27,4 +27,7 @@ typedef NS_ENUM(NSInteger, NSViewContentMode) {
 @interface NSImageView (contentMode)
 
 @property (nonatomic, assign) NSViewContentMode contentMode;
+@property (nonatomic, strong) NSImage *orginImage;
+
+- (void)update;
 @end

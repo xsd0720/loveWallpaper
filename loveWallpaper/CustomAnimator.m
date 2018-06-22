@@ -21,7 +21,7 @@
     //    topVC.view.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
     //
     //    // start out invisible
-    //    topVC.view.alphaValue = 0;
+    topVC.view.alphaValue = 0;
     
     // add view of presented viewcontroller
     float w = [NSApplication sharedApplication].keyWindow.frame.size.width;
@@ -37,12 +37,12 @@
     //    [topVC.view setFrame:NSRectFromCGRect(frame)];
     topVC.view.layer.backgroundColor = [NSColor whiteColor].CGColor;
     bottomVC.view.hidden = YES;
-    //
-    //    // Do some CoreAnimation stuff to present view
-    //    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-    //        context.duration = 0.5;
-    //        topVC.view.animator.alphaValue = 1;
-    //    } completionHandler:nil];
+    
+        // Do some CoreAnimation stuff to present view
+        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+            context.duration = 1;
+            topVC.view.animator.alphaValue = 1;
+        } completionHandler:nil];
     
 }
 

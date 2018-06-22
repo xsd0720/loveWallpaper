@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "HomeViewController.h"
-@interface AppDelegate ()
+#import "DetailViewController.h"
+#import "NSView+Extension.h"
+@interface AppDelegate ()<NSWindowDelegate>
 
 @property (nonatomic, strong) NSWindow *window;
 @property (nonatomic, strong) HomeViewController *homeVC;
@@ -21,10 +23,11 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
 
-    NSUInteger style =  NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable|NSWindowStyleMaskFullScreen;
-    float w = [[NSScreen mainScreen] frame].size.width/1.2;
-    float h = [[NSScreen mainScreen] frame].size.height/1.2;
+    NSUInteger style =  NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable;
+    float w = [[NSScreen mainScreen] frame].size.width/2;
+    float h = [[NSScreen mainScreen] frame].size.height/2;
     self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:YES];
+    self.window.delegate = self;
     
 
     _window.titlebarAppearsTransparent = false;
@@ -34,6 +37,7 @@
     [self.window center];
     self.homeVC = [[HomeViewController alloc] init];
 //    [self.window setContentViewController:self.homeVC];
+    self.window.contentView.backgroundColor = [NSColor orangeColor];
     [self.window.contentView addSubview:self.homeVC.view];
     [self.window setReleasedWhenClosed:NO];
     [self configStatusBar];
@@ -102,5 +106,18 @@
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
     // Insert code here to tear down your application
 }
+
+- (void)windowDidResize:(NSNotification *)notification{
+    NSWindow *win = [notification object];
+//    [win.contentView.subviews performSelector:@selector(layoutSublayers)];
+    for (NSView *v in win.contentView.subviews) {
+        v.frame = win.contentView.bounds;
+    }
+    
+}
+
+//- (NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize{
+//
+//}
 
 @end

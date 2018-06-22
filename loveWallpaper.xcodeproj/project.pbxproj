@@ -73,6 +73,7 @@
 		3B00230F20DBACA800082E51 /* NSString+md5.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+md5.m"; sourceTree = "<group>"; };
 		3B00231120DBB13700082E51 /* NSImageView+contentMode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImageView+contentMode.h"; sourceTree = "<group>"; };
 		3B00231220DBB13700082E51 /* NSImageView+contentMode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSImageView+contentMode.m"; sourceTree = "<group>"; };
+		3B00233620DCA15300082E51 /* 爱壁纸HD.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "爱壁纸HD.entitlements"; sourceTree = "<group>"; };
 		3B2EBDF920DA2AD800AF5C27 /* ClipView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ClipView.h; sourceTree = "<group>"; };
 		3B2EBDFA20DA2AD800AF5C27 /* ClipView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ClipView.m; sourceTree = "<group>"; };
 		3B2EBDFC20DB401600AF5C27 /* DetailView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailView.h; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 		3B51CB4220D8B31100A2C9FD /* loveWallpaper */ = {
 			isa = PBXGroup;
 			children = (
+				3B00233620DCA15300082E51 /* 爱壁纸HD.entitlements */,
 				3BD2119E20D9F10C005151C7 /* SDWebImage */,
 				559D65BD20D93F5B0087E8C7 /* AFNetworking */,
 				3B51CB4320D8B31100A2C9FD /* AppDelegate.h */,
@@ -382,6 +384,11 @@
 					3B51CB3F20D8B31100A2C9FD = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -586,6 +593,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "loveWallpaper/爱壁纸HD.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = loveWallpaper/Info.plist;
@@ -599,6 +607,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "loveWallpaper/爱壁纸HD.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = loveWallpaper/Info.plist;
