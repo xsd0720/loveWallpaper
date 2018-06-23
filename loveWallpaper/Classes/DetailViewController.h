@@ -10,4 +10,6 @@
 
 @interface DetailViewController : NSViewController
 @property (nonatomic) NSDictionary *dic;
+@property (nonatomic) NSMutableArray *list;
+@property (nonatomic) NSInteger current;
 @end

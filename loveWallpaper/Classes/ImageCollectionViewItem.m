@@ -9,12 +9,11 @@
 #import "ImageCollectionViewItem.h"
 #import "UIImageView+WebCache.h"
 #import "ClipView.h"
-#import "CursorImageView.h"
 #import "NSImageView+contentMode.h"
 #define RGB(r,g,b) [NSColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1]
 @interface ImageCollectionViewItem ()
 
-@property (nonatomic, strong) CursorImageView *coverImageView;
+@property (nonatomic, strong) NSImageView *coverImageView;
 @property (nonatomic, strong) NSTextField *nameLabel;
 
 @property (nonatomic, strong) ClipView *clipView;
@@ -44,7 +43,7 @@
         self.view.layer.backgroundColor = [[NSColor redColor] CGColor];
 //        [self.view updateTrackingAreas];
         
-        self.coverImageView = [[CursorImageView alloc] initWithFrame:self.view.bounds];
+        self.coverImageView = [[NSImageView alloc] initWithFrame:self.view.bounds];
         self.coverImageView.wantsLayer = YES;
         self.coverImageView.contentMode = NSViewContentModeScaleAspectFill;
         self.coverImageView.layer.backgroundColor = [RGB(162, 39, 49) CGColor];

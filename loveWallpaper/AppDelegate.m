@@ -10,6 +10,8 @@
 #import "HomeViewController.h"
 #import "DetailViewController.h"
 #import "NSView+Extension.h"
+#import "XXScrollView.h"
+#import "BannerScollView.h"
 @interface AppDelegate ()<NSWindowDelegate>
 
 @property (nonatomic, strong) NSWindow *window;
@@ -22,28 +24,31 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
+    [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationAutoHideMenuBar];
+    NSUInteger style =  NSWindowStyleMaskTitled|NSWindowStyleMaskFullSizeContentView;
+    float w = [[NSScreen mainScreen] frame].size.width/1;
+    float h = [[NSScreen mainScreen] frame].size.height/1;
+    self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(800, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:NO];
 
-    NSUInteger style =  NSWindowStyleMaskTitled | NSWindowStyleMaskMiniaturizable | NSWindowStyleMaskResizable | NSWindowStyleMaskClosable;
-    float w = [[NSScreen mainScreen] frame].size.width/2;
-    float h = [[NSScreen mainScreen] frame].size.height/2;
-    self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:YES];
-    self.window.delegate = self;
-    
-
-    _window.titlebarAppearsTransparent = false;
+    self.window.titlebarAppearsTransparent = true;
     self.window.titleVisibility = NSWindowTitleHidden;
-//    self.window.delegate = self;
+//    self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
+    
     [self.window makeKeyAndOrderFront:self];
     [self.window center];
     self.homeVC = [[HomeViewController alloc] init];
 //    [self.window setContentViewController:self.homeVC];
-    self.window.contentView.backgroundColor = [NSColor orangeColor];
+    self.window.contentView.backgroundColor = [NSColor blackColor];
     [self.window.contentView addSubview:self.homeVC.view];
+    
     [self.window setReleasedWhenClosed:NO];
     [self configStatusBar];
-//    [self configMainMenu];
+    [self configMainMenu];
     
+//    NSTitlebarAccessoryViewController *titlebarAccess = [[NSTitlebarAccessoryViewController alloc] init];
+//    [self.window addTitlebarAccessoryViewController:titlebarAccess];
     
+
 }
 
 
@@ -63,6 +68,7 @@
     [disableItem setTarget:self];
     [menu addItem:disableItem];
     
+    
 }
 
 - (void)configMainMenu{
@@ -78,11 +84,12 @@
     NSMenuItem *quitItem = [[NSMenuItem alloc] initWithTitle:@"quit" action:@selector(quit) keyEquivalent:@""];
     [appMenu addItem:quitItem];
     [menu setSubmenu:appMenu forItem:appItem];
-
+//    [NSMenu setMenuBarVisible:NO];
+//    [self.window mak]
     
 //    [[NSApplication sharedApplication] setMenu:menu];
     
-    [[NSApplication sharedApplication] setMainMenu:menu];
+
 }
 
 - (void)abc{

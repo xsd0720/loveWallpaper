@@ -7,8 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@interface UIImageView : NSImageView
-@end
+
 
 @interface ImageCollectionViewItem : NSCollectionViewItem
 @property (nonatomic) NSDictionary *dic;

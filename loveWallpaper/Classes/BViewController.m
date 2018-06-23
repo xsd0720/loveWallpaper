@@ -181,6 +181,8 @@
     NSInteger section = indexPath.section*GROUPSIZE;
     DetailViewController *detailVc = [[DetailViewController alloc] init];
     detailVc.dic = self.dataSet[index+section];
+    detailVc.list = self.dataSet;
+    detailVc.current = index+section;
     [self presentViewController:detailVc];
 }
 

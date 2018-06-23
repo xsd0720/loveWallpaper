@@ -14,4 +14,17 @@
     self.wantsLayer = true;
     self.layer.backgroundColor = [backgroundColor CGColor];
 }
+
+- (void)mouseMoved:(NSEvent *)event{
+    
+}
+
+- (void)center{
+    NSWindow *win = [[NSApplication sharedApplication] keyWindow];
+    
+    float x = (NSWidth(win.contentView.bounds)-NSWidth(self.bounds))/2;
+    float y = (NSHeight(win.contentView.bounds)-NSHeight(self.bounds))/2;
+    
+    [self setFrameOrigin:NSMakePoint(x, y)];
+}
 @end

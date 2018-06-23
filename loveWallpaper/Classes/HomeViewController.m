@@ -13,13 +13,10 @@
 #import "HttpTool.h"
 #import "ImageCollectionViewItem.h"
 #import "UIImageView+WebCache.h"
-#import "DetailView.h"
-#import "ListView.h"
 #import "NSImageView+contentMode.h"
 #import "NSViewController+present.h"
 #define AITETABLECELLIDENTIFIER  @"AITETABLECELLIDENTIFIER"
-#define RGBA(r,g,b,a) [NSColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
-#define RGB(r,g,b) [NSColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1]
+
 
 
 @interface HomeViewController ()<NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout>
@@ -32,7 +29,6 @@
 @property (nonatomic, strong) NSScrollView *scrollView;
 @property (nonatomic, strong) NSImageView *bgImageView;
 
-@property (nonatomic, strong) DetailView *detailView;
 @end
 
 @implementation HomeViewController

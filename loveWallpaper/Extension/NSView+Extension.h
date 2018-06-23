@@ -1,5 +1,5 @@
 //
-//  CursorImageView.h
+//  NSView+Extension.h
 //  loveWallpaper
 //
 //  Created by xiaowen on 2018/6/21.
@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CursorImageView : NSImageView
+@interface NSView (Extension)
+@property (nonatomic) NSColor *backgroundColor;
 
+- (void)center;
 @end

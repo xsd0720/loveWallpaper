@@ -8,21 +8,26 @@
 
 #import "DetailViewController.h"
 #import "UIImageView+WebCache.h"
-#import "SDWebImageManager.h"
+#import "SDWebImageDownloader.h"
 #import "NSString+md5.h"
 #import "NSImageView+contentMode.h"
 #import "NSView+Extension.h"
 #import <QuartzCore/CAAnimation.h>
+#import "BannerScollView.h"
 @interface DetailViewController ()
 @property (nonatomic, strong) NSImageView *bgImageView;
-@property (nonatomic, strong) NSScrollView *mainScrollView;
+@property (nonatomic, strong) BannerScollView *mainScrollView;
 @property (nonatomic, strong) NSImage *curImage;
+@property (nonatomic, strong) NSView *t;
 @end
 
 @implementation DetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.t = [[NSView alloc] initWithFrame:NSMakeRect(NSWidth(self.view.bounds), 0, 100, 100)];
+    self.t.backgroundColor = [NSColor magentaColor];
 //    // Do view setup here.
 ////    NSGestureRecognizer
 //    _mainScrollView = [[NSScrollView alloc] initWithFrame:self.view.bounds];
@@ -81,18 +86,24 @@
 
 //    [self.mainScrollView.contentView scrollPoint:NSMakePoint(500, 0)];
 //
-    self.bgImageView = [[NSImageView alloc] initWithFrame:self.view.bounds];
-    self.bgImageView.wantsLayer = true;
-    self.bgImageView.contentMode = NSViewContentModeScaleAspectFill;
-    self.bgImageView.layer.backgroundColor = [[NSColor purpleColor] CGColor];
-    //        [self.coverImageView sd_setImageWithURL:self.dataSet[0][@"url"]];
-    [self.bgImageView sd_setImageWithURL:self.dic[@"url"] completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        _curImage = image;
-        float ap = image.size.width/image.size.height;
-        image.size = NSMakeSize(NSWidth(self.view.bounds), NSWidth(self.view.bounds)/ap);
-        _bgImageView.image = image;
-    }];
-    [self.view addSubview:self.bgImageView];
+    
+    self.mainScrollView = [[BannerScollView alloc] initWithFrame:self.view.bounds];
+    self.mainScrollView.dataSet = self.list;
+    self.mainScrollView.current = self.current;
+    [self.view addSubview:self.mainScrollView];
+    
+//    self.bgImageView = [[NSImageView alloc] initWithFrame:self.view.bounds];
+//    self.bgImageView.wantsLayer = true;
+//    self.bgImageView.contentMode = NSViewContentModeScaleAspectFill;
+//    self.bgImageView.layer.backgroundColor = [[NSColor purpleColor] CGColor];
+//    //        [self.coverImageView sd_setImageWithURL:self.dataSet[0][@"url"]];
+//    [self.bgImageView sd_setImageWithURL:self.dic[@"url"] completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+//        _curImage = image;
+//        float ap = image.size.width/image.size.height;
+//        image.size = NSMakeSize(NSWidth(self.view.bounds), NSWidth(self.view.bounds)/ap);
+//        _bgImageView.image = image;
+//    }];
+//    [self.view addSubview:self.bgImageView];
 //
     NSButton *back = [[NSButton alloc] initWithFrame:NSMakeRect(0, NSHeight(self.view.bounds)-100, 62, 49)];
     [back setTarget:self];
@@ -174,24 +185,48 @@
 //        [view.layer addAnimation:animation forKey:@"animation"];
 //}
 - (void)desktop{
-    NSString *s = self.dic[@"url"];
+    if (self.t.superview) {
+        return;
+    }
+    [self.t center];
+    [self.view addSubview:self.t];
+    NSString *s = self.list[self.mainScrollView.current][@"url"];
     NSString *md5FileName = [NSString stringWithFormat:@"%@.%@", [s md5], [s pathExtension]];
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *filePath = [documentPath stringByAppendingPathComponent:md5FileName];
-
-    NSData *d = [self.curImage TIFFRepresentation];
-    [d writeToFile:filePath atomically:NO];
     
-    [[NSWorkspace sharedWorkspace] setDesktopImageURL:[NSURL fileURLWithPath:filePath] forScreen:[NSScreen mainScreen] options:nil error:nil];
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:s] options:SDWebImageDownloaderHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(NSImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        NSData *d = [image TIFFRepresentation];
+        [d writeToFile:filePath atomically:NO];
+        
+        [[NSWorkspace sharedWorkspace] setDesktopImageURL:[NSURL fileURLWithPath:filePath] forScreen:[NSScreen mainScreen] options:nil error:nil];
+        [self.t removeFromSuperview];
+    }];
+
 }
 
 - (void)download{
-    NSString *s = self.dic[@"url"];
+    
+    if (self.t.superview) {
+        return;
+    }
+    [self.t center];
+    [self.view addSubview:self.t];
+    NSString *s = self.list[self.mainScrollView.current][@"url"];
     NSString *md5FileName = [NSString stringWithFormat:@"%@.%@", [s md5], [s pathExtension]];
     NSString *documentPath = [NSSearchPathForDirectoriesInDomains(NSDownloadsDirectory, NSUserDomainMask, YES) lastObject];
     NSString *filePath = [documentPath stringByAppendingPathComponent:md5FileName];
-    NSData *d = [self.curImage TIFFRepresentation];
-    [d writeToFile:filePath atomically:NO];
+
+    
+    [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:[NSURL URLWithString:s] options:SDWebImageDownloaderHighPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(NSImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        NSData *d = [image TIFFRepresentation];
+        [d writeToFile:filePath atomically:NO];
+        [self.t removeFromSuperview];
+    }];
     
     
 }
