@@ -90,8 +90,12 @@
     if (dic[@"name"]) {
         __weak typeof(self) weakSelf = self;
         _nameLabel.stringValue = dic[@"name"];
-        NSURL *url = [NSURL URLWithString:@"http://p19.qhimg.com/bdm/250_150_100/t013f358a6a343059ab.jpg"];
-        [_coverImageView sd_setImageWithURL:url completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        NSString *urlstr = dic[@"cover"];
+        NSURL *url = [NSURL URLWithString:urlstr];
+        
+        
+        NSString *thumbUrlStr = [NSString stringWithFormat:@"%@://%@/bdm/250_150_100/%@", url.scheme,url.host,[url pathComponents][1]];
+        [_coverImageView sd_setImageWithURL:thumbUrlStr completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             NSImage *im =[weakSelf resizeImage:image size:weakSelf.view.bounds.size];
             weakSelf.coverImageView.image = im;
         }];

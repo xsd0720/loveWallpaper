@@ -35,23 +35,22 @@
     //    CGRect frame = NSRectToCGRect(bottomVC.view.frame);
     //    frame = CGRectInset(frame, 40, 40);
     //    [topVC.view setFrame:NSRectFromCGRect(frame)];
-    topVC.view.layer.backgroundColor = [NSColor whiteColor].CGColor;
     bottomVC.view.hidden = YES;
     
-        // Do some CoreAnimation stuff to present view
-        [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-            context.duration = 1;
-            topVC.view.animator.alphaValue = 1;
-        } completionHandler:nil];
+    // Do some CoreAnimation stuff to present view
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        context.duration = 1;
+        topVC.view.animator.alphaValue = 1;
+    } completionHandler:nil];
     
 }
 
 - (void)animateDismissalOfViewController:(NSViewController *)viewController fromViewController:(NSViewController *)fromViewController {
     
-        NSViewController* bottomVC = fromViewController;
-    bottomVC.view.hidden = NO;
+    NSViewController* bottomVC = fromViewController;
+//    bottomVC.view.hidden = NO;
     NSViewController* topVC = viewController;
-    [topVC.view removeFromSuperview];
+//    [topVC.view removeFromSuperview];
     
 //    [topVC removeFromParentViewController];
     //
@@ -62,12 +61,13 @@
     //    topVC.view.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
     //
     //    // Do some CoreAnimation stuff to present view
-    //    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
-    //        context.duration = 0.5;
-    //        topVC.view.animator.alphaValue = 0;
-    //    } completionHandler:^{
-    //        [topVC.view removeFromSuperview];
-    //    }];
+    bottomVC.view.hidden = NO;
+    [NSAnimationContext runAnimationGroup:^(NSAnimationContext *context) {
+        context.duration = 1;
+        topVC.view.animator.alphaValue = 0;
+    } completionHandler:^{
+        [topVC.view removeFromSuperview];
+    }];
     
 }
 @end

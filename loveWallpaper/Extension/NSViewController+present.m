@@ -16,6 +16,7 @@
     frame.origin.x = 0;
     frame.origin.y = 0;
     VCView *v = [[VCView alloc] initWithFrame:frame];
+    v.backgroundColor = MainColor;
     self.view = v;
 }
 - (void)presentViewController:(NSViewController *)viewController{

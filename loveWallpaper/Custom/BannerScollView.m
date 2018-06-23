@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSImageView *rightImageView;
 @property (nonatomic, strong) XXScrollView *mainScrollView;
 @property (nonatomic, assign) float lastOffset;
+
 @end
 
 @implementation BannerScollView
@@ -54,21 +55,49 @@
 }
 
 - (void)refreshData{
+    if (_current<0) {
+        return;
+    }
+    
+    if (_current >=1 && _current<(self.dataSet.count-1)) {
+        NSInteger leftindex = (_current+self.dataSet.count-1) % self.dataSet.count;
+        NSInteger rightindex = (_current+1) % self.dataSet.count;
+        
+        NSString *leftUrl = self.dataSet[leftindex][@"url"];
+        NSString *middleUrl = self.dataSet[_current][@"url"];
+        NSString *rightUrl = self.dataSet[rightindex][@"url"];
+        
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftUrl]];
+        [self.middleImageView sd_setImageWithURL:[NSURL URLWithString:middleUrl]];
+        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightUrl]];
+        
+        [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds), 0)];
+    }else if(_current==0){
+        
+        NSString *leftUrl = self.dataSet[0][@"url"];
+        NSString *middleUrl = self.dataSet[1][@"url"];
+        NSString *rightUrl = self.dataSet[2][@"url"];
+        
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftUrl]];
+        [self.middleImageView sd_setImageWithURL:[NSURL URLWithString:middleUrl]];
+        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightUrl]];
+        
+        [self.mainScrollView setBoundsOrigin:NSMakePoint(0, 0)];
+    }
+    else if (_current==(self.dataSet.count-1)){
+        
+        NSString *leftUrl = self.dataSet[self.dataSet.count-3][@"url"];
+        NSString *middleUrl = self.dataSet[self.dataSet.count-2][@"url"];
+        NSString *rightUrl = self.dataSet[self.dataSet.count-1][@"url"];
+        
+        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftUrl]];
+        [self.middleImageView sd_setImageWithURL:[NSURL URLWithString:middleUrl]];
+        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightUrl]];
+        
+        [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds)*2, 0)];
+    }
 
-//    NSInteger leftindex = (_current-1)<0?self.dataSet.count-1:(_current-1);
-//    NSInteger rightindex = (_current+1)>(self.dataSet.count-1)?0:(_current+1);
-    NSLog(@"%@", self.dataSet);
-    NSInteger leftindex = (_current+self.dataSet.count-1) % self.dataSet.count;
-    NSInteger rightindex = (_current+1) % self.dataSet.count;
-    
-    NSString *leftUrl = self.dataSet[leftindex][@"url"];
-    NSString *middleUrl = self.dataSet[_current][@"url"];
-    NSString *rightUrl = self.dataSet[rightindex][@"url"];
-    
-    [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftUrl]];
-    [self.middleImageView sd_setImageWithURL:[NSURL URLWithString:middleUrl]];
-    [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightUrl]];
-    [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds), 0)];
+
 }
 
 - (void)setCurrent:(NSInteger)current{

@@ -8,15 +8,10 @@
 
 #import "HomeViewController.h"
 #import "BViewController.h"
-#import "NSColor+extension.h"
-#import "NSView+Extension.h"
 #import "HttpTool.h"
 #import "ImageCollectionViewItem.h"
-#import "UIImageView+WebCache.h"
-#import "NSImageView+contentMode.h"
 #import "NSViewController+present.h"
 #define AITETABLECELLIDENTIFIER  @"AITETABLECELLIDENTIFIER"
-
 
 
 @interface HomeViewController ()<NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout>
@@ -61,56 +56,26 @@
         
     }];
     
-//    _tableContainerView = [[NSScrollView alloc] initWithFrame:CGRectMake(0, 0, 100, self.view.frame.size.height)];
-//
-//    _tableview = [[NSTableView alloc] initWithFrame:CGRectMake(0, 0,
-//                                                               _tableContainerView.frame.size.width,
-//                                                               _tableContainerView.frame.size.height)];
-//
-//    NSTableColumn * column = [[NSTableColumn alloc]initWithIdentifier:@"test"];
-//    column.title = @"分类";
-//    self.tableview = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 300, 100)];
-//    [self.tableview addTableColumn:column];
-//    [self.tableview setDraggingDestinationFeedbackStyle:NSTableViewDraggingDestinationFeedbackStyleGap];
-//    self.tableview.delegate = self;
-//    self.tableview.dataSource = self;
-//    [self.tableview setSelectionHighlightStyle:NSTableViewSelectionHighlightStyleNone];
-//
-//    [_tableContainerView setDocumentView:_tableview];
-//    [self.view addSubview:_tableContainerView];
     [_tableview setBackgroundColor:[NSColor clearColor]];
     [[_tableview enclosingScrollView] setDrawsBackground:NO];
     
     NSCollectionViewFlowLayout *layout = [[NSCollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 20;
     layout.itemSize = NSMakeSize(250, 150);
-    layout.sectionInset = NSEdgeInsetsMake(0, 10, 0, 10);
+    layout.sectionInset = NSEdgeInsetsMake(200, 800, 200, 10);
     layout.scrollDirection = NSCollectionViewScrollDirectionHorizontal;
     
-    _scrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect(0, 0, self.view.bounds.size.width, 200)];
-//    NSCursor *cu = [[NSCursor alloc] init];
-//    [_scrollView addCursorRect:_scrollView.frame cursor:NSCursor.pointingHandCursor];
+    _scrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect(0, 0, self.view.bounds.size.width, NSHeight(self.view.bounds))];
     _collectionView = [[NSCollectionView alloc] initWithFrame:NSZeroRect];
     [_collectionView setCollectionViewLayout:layout];
     _collectionView.delegate = self;
     _collectionView.dataSource = self;
     [_collectionView setSelectable:true];
     [_collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
-//    NSNib *theNib = [[NSNib alloc] initWithNibNamed:@"ImageCollectionViewItem" bundle:nil];
-//    [_collectionView registerNib:theNib forItemWithIdentifier:AITETABLECELLIDENTIFIER];
     [_collectionView registerClass:[ImageCollectionViewItem class] forItemWithIdentifier:@"nihao"];
     _scrollView.documentView = _collectionView;
-//    _collectionView.wantsLayer = YES;
-    
-//    [_collectionView.layer setBackgroundColor:[[NSColor clearColor] CGColor]];
-//    [[_collectionView enclosingScrollView] setDrawsBackground:YES];
     
     _collectionView.backgroundColors = @[[NSColor clearColor]];
-    
-    
-//    NSView *v = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, 200, 200)];
-//    v.wantsLayer = YES;
-//    v.layer.backgroundColor = [[NSColor redColor] CGColor];
     
     _scrollView.backgroundColor = [NSColor getColor:@"3dc2d5"];
     [_scrollView setHasHorizontalScroller:YES];
@@ -118,58 +83,19 @@
     _scrollView.documentView = _collectionView;
     [self.view addSubview:_scrollView];
     [HttpTool POST:@"http://api.breaker.club/wallpaper/category" parameters:NULL success:^(NSDictionary *responsObject) {
-
         self.dataSet = responsObject[@"data"];
-//        NSLog(@"%@", self.dataSet);
-//        [self.tableview reloadData];
         [self.collectionView reloadData];
 
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
     
+    
 }
 
-- (void)viewDidLayout{
-    self.bgImageView.frame = self.view.bounds;
-//    [self.bgImageView update];
-}
-
-//- (NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-//    return self.dataSet.count;
-//}
-//
-//- (id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-//
-//    return  nil;
-//}
-//- (CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
-//    return  100;
-//}
-//- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-//    NSTextField *vi = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 100, 100)];
-//    vi.backgroundColor = RGB(163, 39, 49);
-//    [vi setStringValue:self.dataSet[row][@"name"]];
-//    vi.editable = false;
-////    vi.drawsBackground = NO;
-//    vi.bezeled = NO;
-//    vi.selectable = NO;
-//    return vi;
-//}
-//- (BOOL)tableView:(NSTableView *)tableView shouldSelectRow:(NSInteger)row{
-//    NSString *xid = self.dataSet[row][@"id"];
-//    NSString *url = [NSString stringWithFormat:@"http://wallpaper.apc.360.cn/index.php?c=WallPaper&a=getAppsByCategory&cid=%@&start=1&count=20&from=360chrome", xid];
-//    NSLog(@"%@", url);
-//    [HttpTool POST:url parameters:NULL success:^(NSDictionary *responsObject) {
-//
-//        self.arr = responsObject[@"data"];
-//        NSLog(@"%@", self.arr);
-//
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@", error);
-//    }];
-//    return  true;
-////    return true;
+//- (void)viewDidLayout{
+//    self.bgImageView.frame = self.view.bounds;
+////    [self.bgImageView update];
 //}
 
 - (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView *)collectionView{
@@ -199,29 +125,14 @@
 //    NSString *cid = self.dataSet[indexPaths[1]][@"id"]
     NSIndexPath *indexPath = [indexPaths anyObject];
     NSDictionary *dic = self.dataSet[[indexPath item]];
-    NSString *cid = dic[@"id"];
+    NSString *cid = dic[@"cid"];
     
 
     BViewController *b = [[BViewController alloc] init];
     b.cid = cid;
     b.cidtitle = dic[@"name"];
     [self presentViewController:b];
-////    [self presentViewControllerAsSheet:b];
-//    b.view.frame = self.view.bounds;
-//    [self.view addSubview:b.view];
-//    [self addChildViewController:b];
-    
-//    ListView *li = [[ListView alloc] init];
-//    NSViewControllerPresentationAnimator *ani = [NSViewControllerPresentationAnimator ]
-//    [self presentViewController:[[BViewController alloc] init] animator:nsviewcontroller];
-//    [self.view addSubview:li];
-}
 
-//- (NSView *)collectionView:(NSCollectionView *)collectionView viewForSupplementaryElementOfKind:(NSCollectionViewSupplementaryElementKind)kind atIndexPath:(NSIndexPath *)indexPath{
-//    return  nil;
-//}
-//- (NSCollectionViewItem *)newItemForRepresentedObject:(id)object{
-//    return nil;
-//}
+}
 
 @end

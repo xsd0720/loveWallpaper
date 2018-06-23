@@ -97,7 +97,7 @@
     
     [self loadData];
 
-    NSButton *back = [[NSButton alloc] initWithFrame:NSMakeRect(0, NSHeight(self.view.bounds)-100, 62, 49)];
+    NSButton *back = [[NSButton alloc] initWithFrame:NSMakeRect(0, NSHeight(self.view.bounds)-80, 62, 49)];
     [back setTarget:self];
     [back setImage:[NSImage imageNamed:@"BackButton_62x49_"]];
     [back setAction:@selector(back)];
@@ -105,7 +105,7 @@
     [self.view addSubview:back];
     
     
-    NSTextField *te = [[NSTextField alloc] initWithFrame:NSMakeRect(80, NSHeight(self.view.bounds)-100, 300, 49)];
+    NSTextField *te = [[NSTextField alloc] initWithFrame:NSMakeRect(80, NSHeight(self.view.bounds)-85, 300, 49)];
     te.stringValue = self.cidtitle;
     te.backgroundColor = [NSColor clearColor];
     te.bordered = NO;

@@ -61,6 +61,7 @@
 		553E176B20DEB30C00814FE0 /* SDWebImageImageIOCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E173420DEB30C00814FE0 /* SDWebImageImageIOCoder.m */; };
 		553E176C20DEB30C00814FE0 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E173820DEB30C00814FE0 /* UIButton+WebCache.m */; };
 		553E176D20DEB30C00814FE0 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E173920DEB30C00814FE0 /* SDWebImageWebPCoder.m */; };
+		553E177320DEEB9100814FE0 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E177220DEEB9100814FE0 /* LoadingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +177,8 @@
 		553E173920DEB30C00814FE0 /* SDWebImageWebPCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDWebImageWebPCoder.m; sourceTree = "<group>"; };
 		553E173A20DEB30C00814FE0 /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
 		553E177020DEC2C800814FE0 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		553E177120DEEB9100814FE0 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		553E177220DEEB9100814FE0 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +241,8 @@
 				553E16CD20DEB30B00814FE0 /* ClipView.m */,
 				553E16D220DEB30B00814FE0 /* VCView.h */,
 				553E16CC20DEB30B00814FE0 /* VCView.m */,
+				553E177120DEEB9100814FE0 /* LoadingView.h */,
+				553E177220DEEB9100814FE0 /* LoadingView.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -256,8 +261,8 @@
 				553E16D720DEB30B00814FE0 /* HomeViewController.m */,
 				553E16D820DEB30B00814FE0 /* BViewController.h */,
 				553E16DC20DEB30B00814FE0 /* BViewController.m */,
-				553E16D920DEB30B00814FE0 /* DetailViewController.m */,
 				553E16DE20DEB30B00814FE0 /* DetailViewController.h */,
+				553E16D920DEB30B00814FE0 /* DetailViewController.m */,
 				553E16DA20DEB30B00814FE0 /* ImageCollectionViewItem.h */,
 				553E16DD20DEB30B00814FE0 /* ImageCollectionViewItem.m */,
 			);
@@ -512,6 +517,7 @@
 				553E175E20DEB30C00814FE0 /* SDWebImageCoder.m in Sources */,
 				553E174920DEB30C00814FE0 /* NSImageView+contentMode.m in Sources */,
 				553E175820DEB30C00814FE0 /* SDWebImageDownloader.m in Sources */,
+				553E177320DEEB9100814FE0 /* LoadingView.m in Sources */,
 				553E175B20DEB30C00814FE0 /* SDWebImageCoderHelper.m in Sources */,
 				553E176D20DEB30C00814FE0 /* SDWebImageWebPCoder.m in Sources */,
 				553E173B20DEB30C00814FE0 /* VCView.m in Sources */,
