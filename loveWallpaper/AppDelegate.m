@@ -14,7 +14,6 @@
 #import "BannerScollView.h"
 @interface AppDelegate ()<NSWindowDelegate>
 
-@property (nonatomic, strong) NSWindow *window;
 @property (nonatomic, strong) HomeViewController *homeVC;
 @property (nonatomic, strong) NSStatusItem *demoItem;
 
@@ -25,11 +24,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
     [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationAutoHideMenuBar];
+    
     NSUInteger style =  NSWindowStyleMaskTitled|NSWindowStyleMaskFullSizeContentView;
-    float w = [[NSScreen mainScreen] frame].size.width/1;
-    float h = [[NSScreen mainScreen] frame].size.height/1;
-    self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(800, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:NO];
-
+    float w = [[NSScreen mainScreen] frame].size.width;
+    float h = [[NSScreen mainScreen] frame].size.height;
+    
+    self.window = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, w, h) styleMask:style backing:NSBackingStoreBuffered defer:YES];
     self.window.titlebarAppearsTransparent = true;
     self.window.titleVisibility = NSWindowTitleHidden;
 //    self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
@@ -40,6 +40,7 @@
 //    [self.window setContentViewController:self.homeVC];
     self.window.contentView.backgroundColor = [NSColor blackColor];
     [self.window.contentView addSubview:self.homeVC.view];
+
     
     [self.window setReleasedWhenClosed:NO];
     [self configStatusBar];

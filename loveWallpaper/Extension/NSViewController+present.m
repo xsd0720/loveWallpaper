@@ -9,13 +9,18 @@
 #import "NSViewController+present.h"
 #import "CustomAnimator.h"
 #import "VCView.h"
+#import "AppDelegate.h"
 @implementation NSViewController (present)
 
 - (void)loadView{
-    NSRect frame = [[[NSApplication sharedApplication] mainWindow] frame];
-    frame.origin.x = 0;
-    frame.origin.y = 0;
-    VCView *v = [[VCView alloc] initWithFrame:frame];
+    float w = [[NSScreen mainScreen] frame].size.width;
+    float h = [[NSScreen mainScreen] frame].size.height;
+    NSLog(@"%@", [NSApplication sharedApplication]);
+    AppDelegate *delegeate = [[NSApplication sharedApplication] delegate];
+    NSLog(@" loadView %@", delegeate);
+    NSLog(@" loadView %@", delegeate.window);
+    NSLog(@" loadView %@", NSStringFromRect(delegeate.window.frame));
+    VCView *v = [[VCView alloc] initWithFrame:NSMakeRect(0, 0, w, h)];
     v.backgroundColor = MainColor;
     self.view = v;
 }
