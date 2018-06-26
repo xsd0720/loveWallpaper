@@ -35,8 +35,6 @@
 //}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"viewDidLoad superview %@", self.view.superview);
-    NSLog(@"self view frame%@", NSStringFromRect(self.view.frame));
     // Do view setup here.
     self.dataSet = [NSMutableArray array];
     self.view.backgroundColor = RGB(163, 39, 49);
