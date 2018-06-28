@@ -10,6 +10,8 @@
 		3B51CB4520D8B31100A2C9FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51CB4420D8B31100A2C9FD /* AppDelegate.m */; };
 		3B51CB4720D8B31100A2C9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B51CB4620D8B31100A2C9FD /* Assets.xcassets */; };
 		3B51CB4D20D8B31200A2C9FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51CB4C20D8B31200A2C9FD /* main.m */; };
+		3BF4258F20E484AE00F655A8 /* NSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4258E20E484AE00F655A8 /* NSLabel.m */; };
+		3BF4259220E4859800F655A8 /* UITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4259120E4859800F655A8 /* UITextField.m */; };
 		553E173B20DEB30C00814FE0 /* VCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E16CC20DEB30B00814FE0 /* VCView.m */; };
 		553E173C20DEB30C00814FE0 /* ClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E16CD20DEB30B00814FE0 /* ClipView.m */; };
 		553E173D20DEB30C00814FE0 /* CustomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E16CE20DEB30B00814FE0 /* CustomAnimator.m */; };
@@ -72,6 +74,10 @@
 		3B51CB4620D8B31100A2C9FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B51CB4B20D8B31200A2C9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B51CB4C20D8B31200A2C9FD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BF4258D20E484AE00F655A8 /* NSLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSLabel.h; sourceTree = "<group>"; };
+		3BF4258E20E484AE00F655A8 /* NSLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSLabel.m; sourceTree = "<group>"; };
+		3BF4259020E4859800F655A8 /* UITextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextField.h; sourceTree = "<group>"; };
+		3BF4259120E4859800F655A8 /* UITextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITextField.m; sourceTree = "<group>"; };
 		553E16CB20DEB30B00814FE0 /* BannerScollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerScollView.h; sourceTree = "<group>"; };
 		553E16CC20DEB30B00814FE0 /* VCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCView.m; sourceTree = "<group>"; };
 		553E16CD20DEB30B00814FE0 /* ClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipView.m; sourceTree = "<group>"; };
@@ -243,6 +249,10 @@
 				553E16CC20DEB30B00814FE0 /* VCView.m */,
 				553E177120DEEB9100814FE0 /* LoadingView.h */,
 				553E177220DEEB9100814FE0 /* LoadingView.m */,
+				3BF4258D20E484AE00F655A8 /* NSLabel.h */,
+				3BF4258E20E484AE00F655A8 /* NSLabel.m */,
+				3BF4259020E4859800F655A8 /* UITextField.h */,
+				3BF4259120E4859800F655A8 /* UITextField.m */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -281,15 +291,15 @@
 		553E16E220DEB30B00814FE0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				553E16E620DEB30B00814FE0 /* NSImageView+contentMode.h */,
 				553E16E320DEB30B00814FE0 /* NSViewController+present.m */,
 				553E16E420DEB30B00814FE0 /* NSString+md5.h */,
-				553E16E520DEB30B00814FE0 /* NSColor+extension.h */,
-				553E16E620DEB30B00814FE0 /* NSImageView+contentMode.h */,
-				553E16E720DEB30B00814FE0 /* NSView+Extension.h */,
-				553E16E820DEB30B00814FE0 /* NSViewController+present.h */,
-				553E16E920DEB30B00814FE0 /* NSColor+extension.m */,
 				553E16EA20DEB30B00814FE0 /* NSString+md5.m */,
+				553E16E520DEB30B00814FE0 /* NSColor+extension.h */,
+				553E16E920DEB30B00814FE0 /* NSColor+extension.m */,
+				553E16E720DEB30B00814FE0 /* NSView+Extension.h */,
 				553E16EB20DEB30B00814FE0 /* NSView+Extension.m */,
+				553E16E820DEB30B00814FE0 /* NSViewController+present.h */,
 				553E16EC20DEB30B00814FE0 /* NSImageView+contentMode.m */,
 			);
 			path = Extension;
@@ -507,6 +517,7 @@
 				553E175420DEB30C00814FE0 /* SDWebImageFrame.m in Sources */,
 				553E174A20DEB30C00814FE0 /* AFURLResponseSerialization.m in Sources */,
 				553E175720DEB30C00814FE0 /* FLAnimatedImageView+WebCache.m in Sources */,
+				3BF4258F20E484AE00F655A8 /* NSLabel.m in Sources */,
 				553E174320DEB30C00814FE0 /* ImageCollectionViewItem.m in Sources */,
 				553E174520DEB30C00814FE0 /* NSViewController+present.m in Sources */,
 				553E175320DEB30C00814FE0 /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -528,6 +539,7 @@
 				553E174E20DEB30C00814FE0 /* AFNetworkReachabilityManager.m in Sources */,
 				553E175120DEB30C00814FE0 /* MKAnnotationView+WebCache.m in Sources */,
 				553E174420DEB30C00814FE0 /* HttpTool.m in Sources */,
+				3BF4259220E4859800F655A8 /* UITextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,5 +23,6 @@
 #import "NSString+md5.h"
 #import "NSColor+extension.h"
 #import <QuartzCore/CAAnimation.h>
-
+#import "NSLabel.h"
+#import "UITextField.h"
 #endif /* PrefixHeader_pch */

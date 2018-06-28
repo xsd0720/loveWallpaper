@@ -14,7 +14,7 @@
 #define AITETABLECELLIDENTIFIER  @"AITETABLECELLIDENTIFIER"
 
 
-@interface HomeViewController ()<NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout>
+@interface HomeViewController ()<NSCollectionViewDelegate, NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout, UITextFieldDelegate>
 @property (nonatomic, strong) NSTableView *tableview;
 @property (nonatomic, strong) NSMutableArray *dataSet;
 @property (nonatomic, strong) NSScrollView *tableContainerView;
@@ -23,6 +23,9 @@
 @property (nonatomic, strong) NSCollectionView *collectionView;
 @property (nonatomic, strong) NSScrollView *scrollView;
 @property (nonatomic, strong) NSImageView *bgImageView;
+
+//@property (nonatomic, strong) NSTextField *searchTextFiled;
+@property (nonatomic, strong) UITextField *searchTextFiled;
 
 @end
 
@@ -89,14 +92,35 @@
     } failure:^(NSError *error) {
         NSLog(@"%@", error);
     }];
+//
+//    NSTextFieldCell *cell = [[NSTextFieldCell alloc] init];
+//    cell.focusRingType = NSFocusRingTypeNone;
+//    cell.placeholderString = @"搜索";
+//    cell.stringValue = @"123";
+//
     
-    
+    NSImageView *imageView = [[NSImageView alloc] initWithFrame:NSMakeRect(15, 5, 20, 20)];
+    [imageView setImage:[NSImage imageNamed:@"search"]];
+    self.searchTextFiled = [[UITextField alloc] initWithFrame:NSMakeRect(NSWidth(self.view.bounds)-200, NSHeight(self.view.bounds)-100, 150, 30)];
+    self.searchTextFiled.placeholder = @"关键词";
+    self.searchTextFiled.delegate = self;
+    self.searchTextFiled.font = [NSFont systemFontOfSize:14];
+    self.searchTextFiled.leftView = imageView;
+    [self.view addSubview:self.searchTextFiled];
+
 }
 
 //- (void)viewDidLayout{
 //    self.bgImageView.frame = self.view.bounds;
 ////    [self.bgImageView update];
 //}
+
+- (void)textFieldEnterKey:(UITextField *)textFiled value:(NSString *)value{
+    BViewController *b = [[BViewController alloc] init];
+    b.q = value;
+    b.cidtitle = value;
+    [self presentViewController:b];
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView *)collectionView{
     return 1;

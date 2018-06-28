@@ -11,4 +11,5 @@
 @interface BViewController : NSViewController
 @property (nonatomic) NSString *cid;
 @property (nonatomic) NSString *cidtitle;
+@property (nonatomic) NSString *q;
 @end

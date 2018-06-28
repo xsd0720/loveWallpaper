@@ -126,8 +126,12 @@
         return;
     }
     self.isLoading = YES;
-    NSString *url = [NSString stringWithFormat:@"http://api.breaker.club/wallpaper/list?cid=%@&start=%i&count=27", self.cid, start];
-    
+    NSString *url = @"";
+    if (self.q) {
+        url = [NSString stringWithFormat:@"http://api.breaker.club/wallpaper/list?a=search&start=%i&count=27&kw=%@", start, [self.q encodeString]];
+    }else{
+        url = [NSString stringWithFormat:@"http://api.breaker.club/wallpaper/list?cid=%@&start=%i&count=27", self.cid, start];
+    }
     [HttpTool GET:url parameters:NULL success:^(NSDictionary *responsObject) {
 //        NSLog(@"")
         if ([responsObject[@"errno"]  isEqual: @"0"]) {
