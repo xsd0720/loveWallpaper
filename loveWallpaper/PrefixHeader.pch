@@ -25,4 +25,5 @@
 #import <QuartzCore/CAAnimation.h>
 #import "NSLabel.h"
 #import "UITextField.h"
+#import "HttpTool.h"
 #endif /* PrefixHeader_pch */

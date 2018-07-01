@@ -11,4 +11,5 @@
 @interface NSString (md5)
 - (NSString *)md5;
 -(NSString*)encodeString;
++ (NSInteger)compareVersion:(NSString *)v1 to:(NSString *)v2;
 @end

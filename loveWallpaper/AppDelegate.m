@@ -23,7 +23,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationAutoHideMenuBar];
+//    [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationAutoHideMenuBar];
     
     NSUInteger style =  NSWindowStyleMaskTitled|NSWindowStyleMaskFullSizeContentView;
     float w = [[NSScreen mainScreen] frame].size.width;
@@ -46,12 +46,44 @@
     [self configStatusBar];
     [self configMainMenu];
     
-//    NSTitlebarAccessoryViewController *titlebarAccess = [[NSTitlebarAccessoryViewController alloc] init];
-//    [self.window addTitlebarAccessoryViewController:titlebarAccess];
-    
-
+    [self checkVersion];
 }
 
+- (void)checkVersion{
+    [HttpTool GET:@"http://api.breaker.club/wallpaper/version" parameters:NULL success:^(NSDictionary *responsObject) {
+        NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];
+        NSString *cur = responsObject[@"version"];
+        NSString *ser = infoDictionary[@"CFBundleVersion"];
+        NSInteger c = [NSString compareVersion:cur to:ser];
+        if (c == 1) {
+            [self shouldUpdate];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
+}
+
+- (void)shouldUpdate{
+    NSAlert *alert = [[NSAlert alloc]init];
+    //可以设置产品的icon
+    //添加两个按钮吧
+    [alert addButtonWithTitle:@"更新"];
+    [alert addButtonWithTitle:@"取消"];
+    //正文
+    alert.messageText = @"版本更新";
+    //描述文字
+    alert.informativeText = @"发现新版本";
+    //弹窗类型 默认类型 NSAlertStyleWarning
+    [alert setAlertStyle:NSAlertStyleWarning];
+    //回调Block
+    [alert beginSheetModalForWindow:[self window] completionHandler:^(NSModalResponse returnCode) {
+        if (returnCode == NSAlertFirstButtonReturn ) {
+            NSLog(@"this is OK Button tap");
+        }else if (returnCode == NSAlertSecondButtonReturn){
+            NSLog(@"this is Cancel Button tap");
+        }
+    }];
+}
 
 - (void)configStatusBar{
     self.demoItem = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
