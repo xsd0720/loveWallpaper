@@ -95,7 +95,7 @@
         
         
         NSString *thumbUrlStr = [NSString stringWithFormat:@"%@://%@/bdm/250_150_100/%@", url.scheme,url.host,[url pathComponents][1]];
-        [_coverImageView sd_setImageWithURL:thumbUrlStr completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        [_coverImageView sd_setImageWithURL:[NSURL URLWithString:thumbUrlStr] completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
             NSImage *im =[weakSelf resizeImage:image size:weakSelf.view.bounds.size];
             weakSelf.coverImageView.image = im;
         }];
@@ -105,11 +105,16 @@
         __weak typeof(self) weakSelf = self;
         NSString *urlstr = dic[@"url_thumb"];
         NSURL *url = [NSURL URLWithString:urlstr];
-        
-        
-        NSString *thumbUrlStr = [NSString stringWithFormat:@"%@://%@/bdm/250_150_100/%@", url.scheme,url.host,[url pathComponents][1]];
+        NSString *thumbUrlStr = @"";
+        if([urlstr containsString:@"bdr"]){
+            thumbUrlStr = [url.absoluteString stringByReplacingOccurrencesOfString:@"/bdr/__85/" withString:@"/bdm/250_150_100/"];
+        }else{
+            thumbUrlStr = [NSString stringWithFormat:@"%@://%@/bdm/250_150_100/%@", url.scheme,url.host,[url pathComponents][1]];
+        }
+
         NSURL * nurl = [NSURL URLWithString:thumbUrlStr];
         [_coverImageView sd_setImageWithURL:nurl completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            NSLog(@"%@", imageURL);
             NSImage *im =[weakSelf resizeImage:image size:weakSelf.view.bounds.size];
             weakSelf.coverImageView.image = im;
         }];
