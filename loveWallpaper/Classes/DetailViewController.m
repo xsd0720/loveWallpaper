@@ -10,11 +10,15 @@
 #import "SDWebImageDownloader.h"
 #import "BannerScollView.h"
 #import "LoadingView.h"
-@interface DetailViewController ()
+#import "XXScrollView.h"
+#import "DetailCollectItem.h"
+@interface DetailViewController ()<NSCollectionViewDelegate, NSCollectionViewDataSource>
 @property (nonatomic, strong) NSImageView *bgImageView;
 @property (nonatomic, strong) BannerScollView *mainScrollView;
 @property (nonatomic, strong) NSImage *curImage;
 @property (nonatomic, strong) LoadingView *loadingView;
+@property (nonatomic, strong) NSCollectionView *collectionView;
+@property (nonatomic, strong) XXScrollView *scrollView;
 @end
 
 @implementation DetailViewController
@@ -25,12 +29,32 @@
     self.loadingView = [[LoadingView alloc] initWithFrame:NSMakeRect(0, 0, NSWidth(self.view.bounds)/2, 50)];
     [self.loadingView center];
    
-    
-    
     self.mainScrollView = [[BannerScollView alloc] initWithFrame:self.view.bounds];
     self.mainScrollView.dataSet = self.list;
     self.mainScrollView.current = self.current;
     [self.view addSubview:self.mainScrollView];
+//    NSCollectionViewFlowLayout *layout = [[NSCollectionViewFlowLayout alloc] init];
+//    layout.minimumLineSpacing = 0;
+//    layout.itemSize = NSMakeSize(self.view.bounds.size.width, self.view.bounds.size.height);
+//    //        layout.sectionInset = NSEdgeInsetsMake(100, 100, 100, 100);
+//    layout.scrollDirection = NSCollectionViewScrollDirectionHorizontal;
+//
+//
+//    _collectionView = [[NSCollectionView alloc] initWithFrame:NSZeroRect];
+//    [_collectionView setCollectionViewLayout:layout];
+//    _collectionView.delegate = self;
+//    _collectionView.dataSource = self;
+//    [_collectionView setSelectable:true];
+//    [_collectionView setTranslatesAutoresizingMaskIntoConstraints:NO];
+//    [_collectionView registerClass:[DetailCollectItem class] forItemWithIdentifier:@"wohao"];
+//    _collectionView.backgroundColors = @[[NSColor clearColor]];
+    
+//    _scrollView = [[XXScrollView alloc] initWithFrame:NSMakeRect(0, 0, NSWidth(self.view.bounds), NSHeight(self.view.bounds))];
+//    [_scrollView setHorizontalScrollElasticity:NSScrollElasticityNone];
+//    [_scrollView setHasHorizontalScroller:YES];
+//    [[_scrollView horizontalScroller] setAlphaValue:0];
+//    _scrollView.documentView = _collectionView;
+//    [self.view addSubview:_scrollView];
     
     NSButton *back = [[NSButton alloc] initWithFrame:NSMakeRect(0, NSHeight(self.view.bounds)-80, 62, 49)];
     [back setTarget:self];
@@ -60,33 +84,27 @@
 
 - (void)back{
     [self.presentingViewController dismissViewController:self];
-//    NSLog(@"%@", NSStringFromRect(_mainScrollView.contentView.bounds));
-    
-//    CABasicAnimation *animation = [CABasicAnimation
-//
-//                                   animationWithKeyPath: @"transform" ];
-//
-//    animation.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-//
-//    //围绕Z轴旋转，垂直与屏幕
-//
-//    animation.toValue = [NSValue valueWithCATransform3D:
-//
-//                         CATransform3DMakeRotation(M_PI,0.0, 0.0,1.0) ];
-//
-//    animation.duration =1;
-//
-//    animation.cumulative =YES;
-//
-//    animation.repeatCount =100000;
-//
-//    self.mainScrollView.layer.anchorPoint =CGPointMake(0.5,0.5);
-//
-//    [self.mainScrollView.layer addAnimation:animation forKey:nil];
-    
-    
+}
+- (NSInteger)collectionView:(NSCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return self.list.count;
+}
+- (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView *)collectionView{
+    return 1;
 }
 
+- (NSCollectionViewItem *)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath{
+    
+    DetailCollectItem *item = (DetailCollectItem *)[collectionView makeItemWithIdentifier:@"wohao" forIndexPath:indexPath];
+    item.dic = self.list[indexPath.item];
+    return item;
+}
+
+- (void)collectionView:(NSCollectionView *)collectionView didSelectItemsAtIndexPaths:(NSSet<NSIndexPath *> *)indexPaths{
+}
+
+- (void)collectionView:(NSCollectionView *)collectionView willDisplayItem:(NSCollectionViewItem *)item forRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath{
+
+}
 - (void)desktop{
     if (self.loadingView.superview) {
         return;

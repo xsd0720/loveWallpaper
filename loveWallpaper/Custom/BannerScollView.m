@@ -58,7 +58,9 @@
     if (_current<0) {
         return;
     }
-    
+    if (self.dataSet.count<3) {
+        return;
+    }
     if (_current >=1 && _current<(self.dataSet.count-1)) {
         NSInteger leftindex = (_current+self.dataSet.count-1) % self.dataSet.count;
         NSInteger rightindex = (_current+1) % self.dataSet.count;

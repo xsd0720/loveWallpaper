@@ -20,11 +20,13 @@
 - (instancetype)initWithFrame:(NSRect)frameRect{
     self = [super initWithFrame:frameRect];
     if (self) {
+    
         self.contentView = [[NSView alloc] initWithFrame:frameRect];
         [self addSubview:self.contentView];
     }
     return self;
 }
+
 
 - (void)setContentSize:(NSSize)contentSize{
     _contentSize = contentSize;
@@ -36,7 +38,7 @@
 }
 
 - (void)scrollWheel:(NSEvent *)event{
-    
+    [super scrollWheel:event];
     BOOL isFast = fabs(event.scrollingDeltaX)>20;
     if (event.phase == NSEventPhaseBegan) {
         self.isJump = NO;
@@ -45,7 +47,7 @@
         // 修改bounds
         CGRect bounds = self.bounds;
         bounds.origin.x -= event.scrollingDeltaX;
-        
+
         if (bounds.origin.x<=0) {
             bounds.origin.x = 0;
         }
@@ -55,7 +57,7 @@
         self.bounds = bounds;
     }
 
-    
+
 //    id touches = [event touchesMatchingPhase:event.phase inView:self];
     if (!self.isJump) {
         if ((event.phase == NSEventPhaseEnded) || isFast) {
@@ -91,7 +93,7 @@
                 }
 
             }];
-            
+
 
         }
     }
@@ -99,13 +101,13 @@
 }
 
 - (void)animationDidStop:(NSAnimation *)animation{
-    
+
 }
 - (void)panAction:(NSPanGestureRecognizer *)pan {
-    
+
     // 获取手指的偏移量
     CGPoint transP = [pan translationInView:pan.view];
-    
+
     // 修改bounds
     CGRect bounds = self.bounds;
     bounds.origin.x -= transP.x;
@@ -118,7 +120,7 @@
     self.bounds = bounds;
     // 复位
     [pan setTranslation:CGPointZero inView:pan.view];
-    
+
 }
 
 @end

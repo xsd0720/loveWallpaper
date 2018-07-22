@@ -12,6 +12,7 @@
 		3B51CB4D20D8B31200A2C9FD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B51CB4C20D8B31200A2C9FD /* main.m */; };
 		3BF4258F20E484AE00F655A8 /* NSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4258E20E484AE00F655A8 /* NSLabel.m */; };
 		3BF4259220E4859800F655A8 /* UITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BF4259120E4859800F655A8 /* UITextField.m */; };
+		550EBA59210190EE00ECCD9C /* DetailCollectItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 550EBA58210190EE00ECCD9C /* DetailCollectItem.m */; };
 		553E173B20DEB30C00814FE0 /* VCView.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E16CC20DEB30B00814FE0 /* VCView.m */; };
 		553E173C20DEB30C00814FE0 /* ClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E16CD20DEB30B00814FE0 /* ClipView.m */; };
 		553E173D20DEB30C00814FE0 /* CustomAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E16CE20DEB30B00814FE0 /* CustomAnimator.m */; };
@@ -78,6 +79,8 @@
 		3BF4258E20E484AE00F655A8 /* NSLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSLabel.m; sourceTree = "<group>"; };
 		3BF4259020E4859800F655A8 /* UITextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITextField.h; sourceTree = "<group>"; };
 		3BF4259120E4859800F655A8 /* UITextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITextField.m; sourceTree = "<group>"; };
+		550EBA57210190EE00ECCD9C /* DetailCollectItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailCollectItem.h; sourceTree = "<group>"; };
+		550EBA58210190EE00ECCD9C /* DetailCollectItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailCollectItem.m; sourceTree = "<group>"; };
 		553E16CB20DEB30B00814FE0 /* BannerScollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BannerScollView.h; sourceTree = "<group>"; };
 		553E16CC20DEB30B00814FE0 /* VCView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCView.m; sourceTree = "<group>"; };
 		553E16CD20DEB30B00814FE0 /* ClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipView.m; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				553E16D920DEB30B00814FE0 /* DetailViewController.m */,
 				553E16DA20DEB30B00814FE0 /* ImageCollectionViewItem.h */,
 				553E16DD20DEB30B00814FE0 /* ImageCollectionViewItem.m */,
+				550EBA57210190EE00ECCD9C /* DetailCollectItem.h */,
+				550EBA58210190EE00ECCD9C /* DetailCollectItem.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -537,6 +542,7 @@
 				553E174020DEB30C00814FE0 /* HomeViewController.m in Sources */,
 				553E176920DEB30C00814FE0 /* UIView+WebCacheOperation.m in Sources */,
 				553E174E20DEB30C00814FE0 /* AFNetworkReachabilityManager.m in Sources */,
+				550EBA59210190EE00ECCD9C /* DetailCollectItem.m in Sources */,
 				553E175120DEB30C00814FE0 /* MKAnnotationView+WebCache.m in Sources */,
 				553E174420DEB30C00814FE0 /* HttpTool.m in Sources */,
 				3BF4259220E4859800F655A8 /* UITextField.m in Sources */,
