@@ -65,6 +65,7 @@
 		553E176C20DEB30C00814FE0 /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E173820DEB30C00814FE0 /* UIButton+WebCache.m */; };
 		553E176D20DEB30C00814FE0 /* SDWebImageWebPCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E173920DEB30C00814FE0 /* SDWebImageWebPCoder.m */; };
 		553E177320DEEB9100814FE0 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 553E177220DEEB9100814FE0 /* LoadingView.m */; };
+		55B4F33D2104ADCC00B87133 /* DetailImageItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 55B4F33C2104ADCC00B87133 /* DetailImageItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -188,6 +189,8 @@
 		553E177020DEC2C800814FE0 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		553E177120DEEB9100814FE0 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		553E177220DEEB9100814FE0 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		55B4F33B2104ADCC00B87133 /* DetailImageItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailImageItem.h; sourceTree = "<group>"; };
+		55B4F33C2104ADCC00B87133 /* DetailImageItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailImageItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +283,8 @@
 				553E16DD20DEB30B00814FE0 /* ImageCollectionViewItem.m */,
 				550EBA57210190EE00ECCD9C /* DetailCollectItem.h */,
 				550EBA58210190EE00ECCD9C /* DetailCollectItem.m */,
+				55B4F33B2104ADCC00B87133 /* DetailImageItem.h */,
+				55B4F33C2104ADCC00B87133 /* DetailImageItem.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -504,6 +509,7 @@
 				553E176420DEB30C00814FE0 /* NSData+ImageContentType.m in Sources */,
 				553E174120DEB30C00814FE0 /* DetailViewController.m in Sources */,
 				553E175A20DEB30C00814FE0 /* UIImage+MultiFormat.m in Sources */,
+				55B4F33D2104ADCC00B87133 /* DetailImageItem.m in Sources */,
 				553E174C20DEB30C00814FE0 /* AFURLSessionManager.m in Sources */,
 				553E174220DEB30C00814FE0 /* BViewController.m in Sources */,
 				553E175D20DEB30C00814FE0 /* SDWebImagePrefetcher.m in Sources */,

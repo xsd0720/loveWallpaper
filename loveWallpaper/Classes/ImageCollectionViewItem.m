@@ -105,12 +105,14 @@
         __weak typeof(self) weakSelf = self;
         NSString *urlstr = dic[@"url_thumb"];
         NSURL *url = [NSURL URLWithString:urlstr];
-        NSString *thumbUrlStr = @"";
-        if([urlstr containsString:@"bdr"]){
-            thumbUrlStr = [url.absoluteString stringByReplacingOccurrencesOfString:@"/bdr/__85/" withString:@"/bdm/250_150_100/"];
-        }else{
-            thumbUrlStr = [NSString stringWithFormat:@"%@://%@/bdm/250_150_100/%@", url.scheme,url.host,[url pathComponents][1]];
-        }
+        NSString *thumbUrlStr = urlstr;
+//        if([urlstr containsString:@"bdr"]){
+//            thumbUrlStr = [url.absoluteString stringByReplacingOccurrencesOfString:@"/bdr/__85/" withString:@"/bdm/250_150_100/"];
+//        }else{
+//            thumbUrlStr = [NSString stringWithFormat:@"%@://%@/bdm/250_150_100/%@", url.scheme,url.host,[url pathComponents][1]];
+//            NSLog(@"%@", url);
+//            NSLog(@"%@", thumbUrlStr);
+//        }
 
         NSURL * nurl = [NSURL URLWithString:thumbUrlStr];
         [_coverImageView sd_setImageWithURL:nurl completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {

@@ -11,12 +11,14 @@
 #import "XXScrollView.h"
 #import "UIImageView+WebCache.h"
 #import "NSImageView+contentMode.h"
+#import "DetailImageItem.h"
 @interface BannerScollView()<XXScrollViewViewDelegate>
 @property (nonatomic, strong) NSImageView *leftImageView;
 @property (nonatomic, strong) NSImageView *middleImageView;
 @property (nonatomic, strong) NSImageView *rightImageView;
 @property (nonatomic, strong) XXScrollView *mainScrollView;
 @property (nonatomic, assign) float lastOffset;
+@property (nonatomic, strong) NSMutableArray *itemArrays;
 
 @end
 
@@ -28,17 +30,19 @@
         float winW = NSWidth(self.bounds);
         float winH = NSHeight(self.bounds);
         
-        self.leftImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, winW, winH)];
-        self.middleImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(winW, 0, winW, winH)];
-        self.rightImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(winW*2, 0, winW, winH)];
+        self.itemArrays = [[NSMutableArray alloc] init];
         
-        self.leftImageView.backgroundColor = RGB(162, 39, 49);
-        self.middleImageView.backgroundColor = RGB(162, 39, 49);
-        self.rightImageView.backgroundColor = RGB(162, 39, 49);
-        
-        self.leftImageView.contentMode = NSViewContentModeScaleAspectFill;
-        self.middleImageView.contentMode = NSViewContentModeScaleAspectFill;
-        self.rightImageView.contentMode = NSViewContentModeScaleAspectFill;
+//        self.leftImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(0, 0, winW, winH)];
+//        self.middleImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(winW, 0, winW, winH)];
+//        self.rightImageView = [[NSImageView alloc] initWithFrame:NSMakeRect(winW*2, 0, winW, winH)];
+//
+//        self.leftImageView.backgroundColor = RGB(162, 39, 49);
+//        self.middleImageView.backgroundColor = RGB(162, 39, 49);
+//        self.rightImageView.backgroundColor = RGB(162, 39, 49);
+//
+//        self.leftImageView.contentMode = NSViewContentModeScaleAspectFill;
+//        self.middleImageView.contentMode = NSViewContentModeScaleAspectFill;
+//        self.rightImageView.contentMode = NSViewContentModeScaleAspectFill;
         
         self.mainScrollView = [[XXScrollView alloc] initWithFrame:self.bounds];
         self.mainScrollView.backgroundColor = [NSColor orangeColor];
@@ -54,52 +58,48 @@
     return self;
 }
 
+- (void)setDataSet:(NSMutableArray *)dataSet{
+    _dataSet = dataSet;
+    float winW = NSWidth(self.bounds);
+    float winH = NSHeight(self.bounds);
+    for (int i=0; i<MIN(3, dataSet.count); i++) {
+        DetailImageItem *item = [[DetailImageItem alloc] initWithFrame:NSMakeRect(winW*i, 0, winW, winH)];
+        [self.itemArrays addObject:item];
+        [self.mainScrollView addSubview:item];
+    }
+    [self.mainScrollView setContentSize:NSMakeSize(winW*MIN(dataSet.count, 3), winH)];
+}
 - (void)refreshData{
     if (_current<0) {
         return;
     }
-    if (self.dataSet.count<3) {
-        return;
-    }
-    if (_current >=1 && _current<(self.dataSet.count-1)) {
-        NSInteger leftindex = (_current+self.dataSet.count-1) % self.dataSet.count;
-        NSInteger rightindex = (_current+1) % self.dataSet.count;
-        
-        NSString *leftUrl = self.dataSet[leftindex][@"url"];
-        NSString *middleUrl = self.dataSet[_current][@"url"];
-        NSString *rightUrl = self.dataSet[rightindex][@"url"];
-        
-        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftUrl]];
-        [self.middleImageView sd_setImageWithURL:[NSURL URLWithString:middleUrl]];
-        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightUrl]];
-        
-        [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds), 0)];
-    }else if(_current==0){
-        
-        NSString *leftUrl = self.dataSet[0][@"url"];
-        NSString *middleUrl = self.dataSet[1][@"url"];
-        NSString *rightUrl = self.dataSet[2][@"url"];
-        
-        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftUrl]];
-        [self.middleImageView sd_setImageWithURL:[NSURL URLWithString:middleUrl]];
-        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightUrl]];
-        
+    if (_current == 0) {
+        for (int i=0;i<self.itemArrays.count;i++) {
+            DetailImageItem *item = (DetailImageItem *)self.itemArrays[i];
+            NSInteger index = _current+i;
+            [item setDic:self.dataSet[index]];
+        }
         [self.mainScrollView setBoundsOrigin:NSMakePoint(0, 0)];
     }
-    else if (_current==(self.dataSet.count-1)){
-        
-        NSString *leftUrl = self.dataSet[self.dataSet.count-3][@"url"];
-        NSString *middleUrl = self.dataSet[self.dataSet.count-2][@"url"];
-        NSString *rightUrl = self.dataSet[self.dataSet.count-1][@"url"];
-        
-        [self.leftImageView sd_setImageWithURL:[NSURL URLWithString:leftUrl]];
-        [self.middleImageView sd_setImageWithURL:[NSURL URLWithString:middleUrl]];
-        [self.rightImageView sd_setImageWithURL:[NSURL URLWithString:rightUrl]];
-        
-        [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds)*2, 0)];
+    else if (_current == (self.dataSet.count-1)){
+        for (int i=0;i<self.itemArrays.count;i++) {
+            DetailImageItem *item = (DetailImageItem *)self.itemArrays[i];
+            NSInteger index = _current-(self.itemArrays.count-i-1);
+            [item setDic:self.dataSet[index]];
+        }
+        if (_current==1) {
+            [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds), 0)];
+        }else{
+            [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds)*2, 0)];
+        }
+    }else{
+        for (int i=0;i<self.itemArrays.count;i++) {
+            DetailImageItem *item = (DetailImageItem *)self.itemArrays[i];
+            NSInteger index = _current+i-1;
+            [item setDic:self.dataSet[index]];
+        }
+        [self.mainScrollView setBoundsOrigin:NSMakePoint(NSWidth(self.mainScrollView.bounds), 0)];
     }
-
-
 }
 
 - (void)setCurrent:(NSInteger)current{
@@ -118,8 +118,7 @@
             self.current = 0;
         }
     }
-    NSLog(@"%li", (long)self.current);
-    [self refreshData];
+//    [self refreshData];
    
 }
 - (void)drawRect:(NSRect)dirtyRect {

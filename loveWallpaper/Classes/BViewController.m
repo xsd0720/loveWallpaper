@@ -39,7 +39,7 @@
 #import "NSViewController+present.h"
 #import "NSImageView+contentMode.h"
 
-#define GROUPSIZE  9
+#define GROUPSIZE  9.0
 
 @interface BViewController ()<NSCollectionViewDelegate, NSCollectionViewDataSource,NSCollectionViewDelegateFlowLayout>
 @property (nonatomic, strong) NSCollectionView *collectionView;
@@ -133,18 +133,18 @@
         url = [NSString stringWithFormat:@"http://api.breaker.club/wallpaper/list?cid=%@&start=%i&count=27", self.cid, start];
     }
     [HttpTool GET:url parameters:NULL success:^(NSDictionary *responsObject) {
-//        NSLog(@"")
         if ([responsObject[@"errno"]  isEqual: @"0"]) {
             NSArray *tmpd = responsObject[@"data"];
             [self.dataSet addObjectsFromArray:tmpd];
-            
-            //        [self.coverImageView sd_setImageWithURL:self.dataSet[0][@"url"]];
-            [self.coverImageView sd_setImageWithURL:self.dataSet[0][@"url"] completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-                float ap = image.size.width/image.size.height;
-                image.size = NSMakeSize(NSWidth(self.view.bounds), NSWidth(self.view.bounds)/ap);
-                _coverImageView.image = image;
-            }];
-            [self.collectionView reloadData];
+            if (self.dataSet.count>0) {
+                [self.coverImageView sd_setImageWithURL:self.dataSet[0][@"url"] completed:^(NSImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+                    float ap = image.size.width/image.size.height;
+                    image.size = NSMakeSize(NSWidth(self.view.bounds), NSWidth(self.view.bounds)/ap);
+                    _coverImageView.image = image;
+                }];
+                [self.collectionView reloadData];
+            }
+ 
             self.isLoading = NO;
             start+=27;
         }else{
@@ -163,10 +163,12 @@
     return NSEdgeInsetsMake(100, 100, 100, 50);
 }
 - (NSInteger)collectionView:(NSCollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return self.dataSet.count>=GROUPSIZE?GROUPSIZE:self.dataSet.count;
+//    return self.dataSet.count>=GROUPSIZE?GROUPSIZE:self.dataSet.count;
+    return self.dataSet.count;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(NSCollectionView *)collectionView{
-    return self.dataSet.count>=GROUPSIZE?(self.dataSet.count/GROUPSIZE):1;
+//    return ceil(self.dataSet.count/GROUPSIZE);
+    return 1;
 }
 
 - (NSCollectionViewItem *)collectionView:(NSCollectionView *)collectionView itemForRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath{
@@ -184,7 +186,7 @@
     NSInteger index = indexPath.item;
     NSInteger section = indexPath.section*GROUPSIZE;
     DetailViewController *detailVc = [[DetailViewController alloc] init];
-    detailVc.dic = self.dataSet[index+section];
+    detailVc.dic = self.dataSet[index];
     detailVc.list = self.dataSet;
     detailVc.current = index+section;
     [self presentViewController:detailVc];
