@@ -193,10 +193,13 @@
 }
 
 - (void)collectionView:(NSCollectionView *)collectionView willDisplayItem:(NSCollectionViewItem *)item forRepresentedObjectAtIndexPath:(NSIndexPath *)indexPath{
-    
-    if (indexPath.section == (self.dataSet.count/GROUPSIZE)-2) {
+    if (indexPath.item == self.dataSet.count-2) {
         [self loadData];
     }
+//
+//    if (indexPath.section == (self.dataSet.count/GROUPSIZE)-2) {
+//        [self loadData];
+//    }
 }
 
 - (void)back{
